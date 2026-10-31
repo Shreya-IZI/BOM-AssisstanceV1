@@ -1,0 +1,37 @@
+VANA DEFENCE & AEROSPACE — SPECIFICATION EXTRACTION & COMPLIANCE MATRIX
+
+1. CRITICAL RED FLAGS & HIGH-RISK CLAUSES
+Risk Flag,Action Required,Clause Reference
+OPTION_CLAUSE_RISK,Vendor prices must remain valid for +25% additional repeat order at contract price.,OPTION CLAUSE: The Purchaser reserves the right to increase or decrease the quantity to be ordered up to 25 percent of bid quantity.
+STRICT_NON_CHINESE,Ensure zero components originate from China. Use indigenous or western alternatives.,"Undertaking Certificate: We hereby confirm that we shall not use any components, parts, material and product sourced from china for the manufacturing of drone."
+
+2. MANDATORY HARDWARE DELIVERABLES LIST
+Item #,Subsystem / Deliverable,Tender Specification Snippet,Category
+1,Airframe / Frame,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+2,Brushless Motors,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+3,Propeller Set,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+4,Speed Controllers (ESC),"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+5,Flight Controller / Autopilot,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+6,EO/IR Camera Gimbal,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+7,GPS / Navigation Unit,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+8,Battery Pack,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+9,Radio Controller & GCS,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+10,Payload Release Mechanism,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+11,Military Hard Case,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+12,Tool Kit & Spares,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+13,Flight Logbook & Manual,"Item Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Came...",TECHNICAL_HARDWARE
+
+"3. MANDATORY TESTING, INSPECTION & SLA DELIVERABLES"
+Item #,Test / Inspection Event,Type,Execution Timeline
+1,"Operator Training (5 Personnel, 10 Days)",Commissioning & Training,Post Delivery
+
+4. MANDATORY BID SUBMISSION DOCUMENTS CHECKLIST
+Doc #,Document Name,Classification,Mandatory?,Verification Status
+1,Non-Chinese Origin Undertaking Certificate (MoD Format),Statutory Certificate,YES,[ ] PENDING
+2,Certificate on Absence of Embedded Malicious Code,Cybersecurity Undertaking,YES,[ ] PENDING
+3,IPv6 Ready Compliance Certificate,Technical Specification Undertaking,YES,[ ] PENDING
+4,"PAN, GSTIN & EFT Mandate",Vendor Financial KYC,YES,[ ] PENDING
+5,OEM Authorization Certificate (MAF),Manufacturer Authorization,YES,[ ] PENDING
+6,ISO 9001:2015 Quality Certificate,Quality Accreditation,YES,[ ] PENDING
+7,3 Years Past Performance / CRAC Proofs,Experience Eligibility,YES,[ ] PENDING
+8,Audited Balance Sheets (Last 3 Financial Years),Financial Eligibility,YES,[ ] PENDING

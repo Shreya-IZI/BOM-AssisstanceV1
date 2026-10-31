@@ -1,0 +1,53 @@
+VANA DEFENCE & AEROSPACE — TENDER & BID COMPLIANCE MATRIX
+Generated for Indian Army / GeM Tenders (MoD Standard)
+
+SECTION A: TENDER IDENTIFICATION & COMMERCIAL SUMMARY
+Field,Value,Sales Team Action Required
+Tender BOQ Title,10-inch Ordnance Dropping Drone,Match exact BoQ title on GeM
+Quantity,48,Total delivery in 15 days to Jammu
+Total Unit Hardware BOM Cost,"INR 340,018.00",Internal benchmark
+Total Estimated Project Cost,"INR 17,824,741.76","Includes 5% warranty, inspection & contingency"
+Recommended Initial Bid (Excl GST),"INR 22,280,927.20",25% Gross margin buffer for Reverse Auction
+Recommended Initial Bid (Incl 18% GST),"INR 26,291,494.10",Final quote on GeM financial portal
+
+SECTION B: CRITICAL COMPLIANCE GATES (REJECTION RISKS)
+Gate #,Risk Area,Tender Requirement,Sales Action / Rule Enforced,Status
+GATE-01,Non-Chinese Origin,Zero Chinese components / parts / sub-assemblies (ATC Cl 17),Mandatory signed undertaking certificate. All parts sourced from India/Europe/US.,MANDATORY
+GATE-02,Advance Samples,3 Advance Samples to be delivered within 5 days of award (ATC Cl 3),Ensure 3 units are ready in inventory; cost amortized into quote.,CRITICAL
+GATE-03,Reverse Auction (RA),RA between lowest 50% technically qualified bidders,Do NOT quote rock-bottom in round 1; retain 10-15% margin for live bidding.,COMMERCIAL
+GATE-04,Option Clause,Buyer right to increase quantity up to +25% at contracted rate,Lock vendor component pricing for at least 180 days.,SUPPLY CHAIN
+GATE-05,Make in India (MII),Class 1 Local Supplier (Min 50% Local Content),Upload OEM local content self-declaration with location of value addition.,ELIGIBILITY
+
+SECTION C: EXPLODED NON-CHINESE COMPLIANT BOM (PER DRONE)
+Item #,Subsystem / Category,Component / Description,Origin,Qty/Drone,Unit Cost (INR),Total Hardware (48 Units)
+1,Frame & Mechanicals,10-inch Carbon Fiber Drone Frame,India,1,"INR 28,000.00","INR 1,344,000.00"
+2,Motor,Vector 3115 SL - 900KV,India,4,"INR 5,000.00","INR 960,000.00"
+3,ESC,Flameback Tech 45A ESC,India,4,"INR 3,380.00","INR 648,960.00"
+4,Propeller,Reflex drive 17 inch CF Folding (Pair),India,2,"INR 2,099.00","INR 201,504.00"
+5,Flight Controller,Agam Agam Indian Autopilot,India,1,"INR 32,000.00","INR 1,536,000.00"
+6,GPS/GNSS,Orbit Nano NEO-F9P-15B RTK + NavIC,India,1,"INR 19,000.00","INR 912,000.00"
+7,Battery,M power 6000mAh 4S,India,2,"INR 4,400.00","INR 422,400.00"
+8,Radio Controller / GCS,Axle Drone Axle GCS 10km,India,1,"INR 128,000.00","INR 6,144,000.00"
+9,Ordnance Release,10-inch Ordnance Release Mech,India,1,"INR 25,000.00","INR 1,200,000.00"
+10,Charger,Indian Power Tech Vana Smart Balance Charger 1200W,India,1,"INR 24,000.00","INR 1,152,000.00"
+11,Hard Transport Case,Military Hard Case IP67,India,1,"INR 22,000.00","INR 1,056,000.00"
+12,Tool Kit & Spares,Tool Set & Field Repair Kit,India,1,"INR 8,500.00","INR 408,000.00"
+13,Logbook & Technical Manual,Technical Manual & Flight Logbook,India,1,"INR 3,500.00","INR 168,000.00"
+14,Nav Lights / Strobes,Anti-Collision RGB Strobe,India,1,"INR 3,500.00","INR 168,000.00"
+
+SECTION D: MANDATORY DOCUMENT UPLOAD CHECKLIST
+Doc #,Document Name / Certificate,Signed & Stamped?,Ready for Upload?
+1,MoD Non-Chinese Origin Undertaking Certificate (Signed & Stamped),[ ] YES,[ ] READY
+2,OEM Class-1 Local Content Self-Declaration / CA Certificate,[ ] YES,[ ] READY
+3,PAN Card & GSTIN Registration Copy,[ ] YES,[ ] READY
+4,Cancelled Cheque & Certified Bank EFT Mandate,[ ] YES,[ ] READY
+5,Bidder Financial Standing Declaration (Not bankrupt / in receivership),[ ] YES,[ ] READY
+6,3-Year Residual Market Life Certificate (Equipment not obsolete / EOL),[ ] YES,[ ] READY
+7,IPv6 Ready Compliance Certificate (For all IT/IP network components),[ ] YES,[ ] READY
+8,Malicious Code Certificate (Firmware & Hardware free from spyware/backdoors),[ ] YES,[ ] READY
+9,Non-Disclosure Declaration Certificate (On Company Letterhead),[ ] YES,[ ] READY
+10,OEM Authorization Certificate (MAF) with contact details,[ ] YES,[ ] READY
+11,ISO 9001:2015 Quality Certificate,[ ] YES,[ ] READY
+12,3 Years Past Performance Proof (CRAC / Supply orders to Govt/PSU for >= 30%),[ ] YES,[ ] READY
+13,Audited Balance Sheets (Last 3 Financial Years certified by CA),[ ] YES,[ ] READY
+14,Compliance Sheet against Buyer Technical Specifications (BoQ line by line),[ ] YES,[ ] READY

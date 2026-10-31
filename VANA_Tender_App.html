@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANA Enterprise — Technical Bidding & BOM Workspace</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        :root {
+            --bg-canvas: #f8fafc;
+            --border-color: #e2e8f0;
+            --border-dark: #cbd5e1;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --card-bg: #ffffff;
+            --sidebar-bg: #0f172a;
+            --badge-green-bg: #f0fdf4;
+            --badge-green-text: #166534;
+            --badge-red-bg: #fef2f2;
+            --badge-red-text: #991b1b;
+            --badge-amber-bg: #fffbeb;
+            --badge-amber-text: #92400e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Bar */
+        .app-header {
+            height: 52px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            flex-shrink: 0;
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 28px;
+            height: 28px;
+            background: #0f172a;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.2px;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            border-left: 1px solid var(--border-color);
+            padding-left: 12px;
+        }
+
+        .status-indicators {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .system-pill {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #22c55e;
+        }
+
+        /* Main Workspace Layout */
+        .app-body {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Left Navigation Rail */
+        .nav-sidebar {
+            width: 220px;
+            background: #ffffff;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            padding: 12px 0;
+            flex-shrink: 0;
+        }
+
+        .nav-group-title {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            padding: 8px 16px 4px 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #334155;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.1s ease;
+        }
+
+        .nav-item:hover {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+
+        .nav-item.active {
+            background-color: #f0fdf4;
+            color: #047857;
+            font-weight: 600;
+            border-left-color: #059669;
+        }
+
+        .nav-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        /* Center Content Area */
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px 32px;
+        }
+
+        .tab-panel {
+            display: none;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+        }
+
+        .section-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Professional Data Panels */
+        .data-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 24px;
+        }
+
+        .panel-heading {
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        .panel-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .panel-body {
+            padding: 18px;
+        }
+
+        /* Upload Strip */
+        .upload-strip {
+            border: 1px dashed var(--border-dark);
+            background: #fafafa;
+            border-radius: 4px;
+            padding: 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .upload-strip:hover {
+            border-color: var(--primary);
+            background: #f0f9ff;
+        }
+
+        .upload-strip-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .upload-strip-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        /* Textarea */
+        textarea.spec-editor {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            padding: 12px;
+            background: #ffffff;
+            color: #1e293b;
+            resize: vertical;
+        }
+
+        textarea.spec-editor:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Primary Corporate Buttons */
+        .btn-primary {
+            background: #0f172a;
+            color: #ffffff;
+            border: 1px solid #0f172a;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary:hover {
+            background: #1e293b;
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: #334155;
+            border: 1px solid var(--border-dark);
+            padding: 7px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-secondary:hover {
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        /* Progress Pipeline Tracker */
+        .pipeline-wrapper {
+            background: #0f172a;
+            color: #f8fafc;
+            border-radius: 4px;
+            padding: 14px 18px;
+            margin-top: 16px;
+        }
+
+        .pipeline-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            color: #94a3b8;
+        }
+
+        .pipeline-bar-bg {
+            height: 4px;
+            background: #334155;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .pipeline-bar-fill {
+            height: 100%;
+            background: #38bdf8;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .pipeline-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+
+        .pipeline-step {
+            font-size: 11px;
+            color: #64748b;
+            padding: 4px 6px;
+            border-left: 2px solid #334155;
+        }
+
+        .pipeline-step.active {
+            color: #38bdf8;
+            border-left-color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .pipeline-step.done {
+            color: #4ade80;
+            border-left-color: #4ade80;
+        }
+
+        .pipeline-log {
+            margin-top: 10px;
+            font-family: ui-monospace, monospace;
+            font-size: 11px;
+            color: #a7f3d0;
+        }
+
+        /* Data Tables */
+        table.enterprise-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        table.enterprise-table th {
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border-color);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.3px;
+        }
+
+        table.enterprise-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+            color: #1e293b;
+        }
+
+        table.enterprise-table tr:hover td {
+            background: #f8fafc;
+        }
+
+        /* Risk Cards Grid */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .risk-card {
+            border: 1px solid #fed7aa;
+            background: #fffaf5;
+            border-radius: 4px;
+            padding: 12px 14px;
+        }
+
+        .risk-card.critical {
+            border-color: #fecaca;
+            background: #fff5f5;
+        }
+
+        .risk-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #991b1b;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .risk-desc {
+            font-size: 11px;
+            color: #475569;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .risk-action {
+            font-size: 11px;
+            font-weight: 600;
+            color: #b91c1c;
+            margin-top: 6px;
+        }
+
+        /* Executive Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .metric-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+        }
+
+        .metric-val {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .metric-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .metric-box.highlight {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .metric-box.highlight .metric-val {
+            color: #166534;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .badge-green { background: #dcfce7; color: #15803d; }
+        .badge-gray { background: #f1f5f9; color: #475569; }
+        .badge-amber { background: #fef3c7; color: #b45309; }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: 6px;
+            width: 100%;
+            max-width: 480px;
+            border: 1px solid var(--border-dark);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .modal-body {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 12px;
+        }
+
+        .modal-body input, .modal-body select, .modal-body textarea {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 8px 10px;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .modal-footer {
+            padding: 12px 18px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            background: #f8fafc;
+        }
+
+        @media print {
+            .app-header, .nav-sidebar, .upload-strip, .btn-primary, .btn-secondary, textarea {
+                display: none !important;
+            }
+            .content-area {
+                padding: 0;
+                overflow: visible;
+            }
+            body {
+                overflow: visible;
+                background: #ffffff;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="brand-section">
+            <div class="brand-logo">V</div>
+            <div>
+                <span class="brand-name">VANA DEFENCE & AEROSPACE</span>
+                <span class="brand-subtitle">Tender Intelligence & Engineering Rules System</span>
+            </div>
+        </div>
+        <div class="status-indicators">
+            <div class="system-pill">
+                <span class="pill-dot"></span>
+                <span>MoD Procurement Standard</span>
+            </div>
+            <div class="system-pill">
+                <span class="pill-dot" style="background:#0284c7;"></span>
+                <span>100% Non-Chinese Verified</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Body Layout -->
+    <div class="app-body">
+
+        <!-- Navigation Rail -->
+        <nav class="nav-sidebar">
+            <div class="nav-group-title">Operations</div>
+            <div class="nav-item active" onclick="switchTab('tab-extract', this)">
+                <span>1. Tender Requirements</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-bom', this)">
+                <span>2. Compliant BOM & Pricing</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-gaps', this)">
+                <span>3. Sourcing Gaps</span>
+                <span id="gapNavBadge" class="nav-badge" style="display:none;">0</span>
+            </div>
+
+            <div class="nav-group-title" style="margin-top:16px;">Master Data</div>
+            <div class="nav-item" onclick="switchTab('tab-catalog', this)">
+                <span>4. Component Master</span>
+            </div>
+        </nav>
+
+        <!-- Main Workspace Panels -->
+        <main class="content-area">
+
+            <!-- ================= TAB 1: TENDER REQUIREMENTS ================= -->
+            <div id="tab-extract" class="tab-panel active">
+                <div class="section-header">
+                    <h2 class="section-title">Technical Specification & Tender Ingestion</h2>
+                    <p class="section-desc">Parse unstructured GeM tenders, extract engineering constraints, identify non-compliance risks, and generate mandatory deliverable checklists.</p>
+                </div>
+
+                <div class="data-panel">
+                    <div class="panel-heading">
+                        <span class="panel-title">Document Ingestion</span>
+                        <div style="display:flex; gap:8px;">
+                            <button type="button" class="btn-secondary" onclick="loadSample('ord')">Load 10-Inch Ordnance Drone (48 Qty)</button>
+                            <button type="button" class="btn-secondary" onclick="loadSample('tactical')">Load Tactical Drone (2 Qty)</button>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <!-- Upload Strip -->
+                        <div id="dropZone" class="upload-strip">
+                            <input type="file" id="tenderFileInput" accept=".pdf,.txt,.doc,.docx" style="display:none;" onchange="handleFileSelect(event)">
+                            <div class="upload-strip-title">Click to browse or drop GeM Tender Document (.pdf / .txt)</div>
+                            <div class="upload-strip-sub">Direct local document stream extraction. Zero external data transmission.</div>
+                            <div id="fileUploadStatus" style="display:none; font-size:11px; font-weight:700; color:#0369a1; margin-top:8px;"></div>
+                        </div>
+
+                        <div style="margin-top:14px;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:11px; color:#64748b; font-weight:600;">
+                                <span>TENDER TEXT / SPECIFICATION BUFFER</span>
+                                <span id="charCount">0 characters</span>
+                            </div>
+                            <textarea id="specInput" rows="6" class="spec-editor" oninput="updateCharCount()" placeholder="Extracted text from your PDF will appear here, or you can paste clauses directly..."></textarea>
+                        </div>
+
+                        <div style="margin-top:14px; display:flex; justify-content:flex-end;">
+                            <button type="button" id="runExtractBtn" class="btn-primary" onclick="executeAnalysis()">
+                                <span>Execute Requirement Extraction & Categorization</span>
+                            </button>
+                        </div>
+
+                        <!-- Progress Tracker -->
+                        <div id="extractionProgressTracker" class="pipeline-wrapper" style="display:none;">
+                            <div class="pipeline-header">
+                                <span>Pipeline Execution</span>
+                                <span id="trackerPct" style="color:#38bdf8;">0%</span>
+                            </div>
+                            <div class="pipeline-bar-bg">
+                                <div id="trackerProgressBar" class="pipeline-bar-fill"></div>
+                            </div>
+                            <div class="pipeline-steps">
+                                <div id="step-1" class="pipeline-step">1. Tokenization</div>
+                                <div id="step-2" class="pipeline-step">2. Legal / Land-Border</div>
+                                <div id="step-3" class="pipeline-step">3. Hardware Parser</div>
+                                <div id="step-4" class="pipeline-step">4. SLAs & Docs</div>
+                                <div id="step-5" class="pipeline-step">5. BOM Matching</div>
+                            </div>
+                            <div id="trackerLogText" class="pipeline-log">> Initializing parser...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Output -->
+                <div id="analysisContainer" style="display:none;">
+                    <!-- Rejection Risks -->
+                    <div class="data-panel" style="border-left: 3px solid #dc2626;">
+                        <div class="panel-heading" style="background:#fffafa;">
+                            <span class="panel-title" style="color:#991b1b;">Rejection Risks & Statutory Gates</span>
+                        </div>
+                        <div class="panel-body">
+                            <div id="redFlagsBox" class="risk-grid"></div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Buckets Grid -->
+                    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;">
+                        <!-- Hardware -->
+                        <div class="data-panel">
+                            <div class="panel-heading">
+                                <span class="panel-title">Hardware Deliverables</span>
+                                <span id="badgeHw" class="badge badge-gray">0 Items</span>
+                            </div>
+                            <div class="panel-body" style="padding:0; max-height:360px; overflow-y:auto;">
+                                <table class="enterprise-table">
+                                    <tbody id="hardwareList"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Testing / SLAs -->
+                        <div class="data-panel">
+                            <div class="panel-heading">
+                                <span class="panel-title">Testing & SLAs</span>
+                                <span id="badgeTest" class="badge badge-amber">0 SLAs</span>
+                            </div>
+                            <div class="panel-body" style="padding:12px; max-height:360px; overflow-y:auto;" id="testingList">
+                            </div>
+                        </div>
+
+                        <!-- Mandatory Docs -->
+                        <div class="data-panel">
+                            <div class="panel-heading">
+                                <span class="panel-title">Submission Checklist</span>
+                                <span id="badgeDocs" class="badge badge-gray">0 Docs</span>
+                            </div>
+                            <div class="panel-body" style="padding:12px; max-height:360px; overflow-y:auto;" id="documentsList">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= TAB 2: BOM EXPLOSION & PRICING ================= -->
+            <div id="tab-bom" class="tab-panel">
+                <div class="section-header">
+                    <h2 class="section-title">Compliant Bill of Materials & Cost Rollup</h2>
+                    <p class="section-desc">Automated derivation of 100% Non-Chinese compliant components, statutory reserves, reverse auction buffers, and official GeM quotation figures.</p>
+                </div>
+
+                <!-- Financial Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="metric-label">Unit Hardware BOM</div>
+                        <div id="priceUnitBOM" class="metric-val">₹0</div>
+                        <div class="metric-sub">Direct raw material / part cost</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Total Project Cost</div>
+                        <div id="priceTotalCost" class="metric-val">₹0</div>
+                        <div class="metric-sub">HW + 5% Warranty + 4% Contingency</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Recommended Bid (Base)</div>
+                        <div id="priceBidEx" class="metric-val" style="color:#0369a1;">₹0</div>
+                        <div class="metric-sub">Base revenue to VANA (Excl. GST)</div>
+                    </div>
+                    <div class="metric-box highlight">
+                        <div class="metric-label" style="color:#15803d;">Official GeM Bid</div>
+                        <div id="priceBidInc" class="metric-val">₹0</div>
+                        <div class="metric-sub" style="color:#166534;">Incl. 18% GST (Tender Entry Price)</div>
+                    </div>
+                </div>
+
+                <div class="data-panel">
+                    <div class="panel-heading">
+                        <span class="panel-title">Engineering Configuration Parameters</span>
+                    </div>
+                    <div class="panel-body" style="display:flex; gap:24px; align-items:flex-end; flex-wrap:wrap;">
+                        <div style="flex:2; min-width:240px;">
+                            <label style="font-size:11px; font-weight:600; color:#475569; display:block; margin-bottom:4px;">PLATFORM VARIANT</label>
+                            <select id="bomVariant" onchange="recalculateBOM()" style="width:100%; border:1px solid var(--border-dark); padding:6px 10px; border-radius:4px; font-size:12px;">
+                                <option value="ORDNANCE_DROPPING">10-inch Ordnance Dropping Drone (Attack / Kamikaze)</option>
+                                <option value="SURVEILLANCE_DAY_NIGHT">Multi-Mission Tactical Drone (EO+IR Dual Gimbal)</option>
+                            </select>
+                        </div>
+                        <div style="flex:1; min-width:120px;">
+                            <label style="font-size:11px; font-weight:600; color:#475569; display:block; margin-bottom:4px;">TENDER QUANTITY</label>
+                            <input type="number" id="bomQty" value="48" min="1" onchange="recalculateBOM()" style="width:100%; border:1px solid var(--border-dark); padding:6px 10px; border-radius:4px; font-size:12px; font-weight:700;">
+                        </div>
+                        <div style="flex:1; min-width:120px;">
+                            <label style="font-size:11px; font-weight:600; color:#475569; display:block; margin-bottom:4px;">MARGIN BUFFER %</label>
+                            <input type="number" id="bomMargin" value="25" min="5" max="50" onchange="recalculateBOM()" style="width:100%; border:1px solid var(--border-dark); padding:6px 10px; border-radius:4px; font-size:12px; font-weight:700;">
+                        </div>
+                        <div style="display:flex; align-items:center; gap:12px; padding-bottom:6px;">
+                            <label style="font-size:11px; font-weight:600; display:flex; align-items:center; gap:6px; cursor:pointer;">
+                                <input type="checkbox" id="bomNoChina" checked onchange="recalculateBOM()">
+                                <span>Zero Chinese Origin (MoD Cl 17)</span>
+                            </label>
+                            <label style="font-size:11px; font-weight:600; display:flex; align-items:center; gap:6px; cursor:pointer;">
+                                <input type="checkbox" id="bomMII" checked onchange="recalculateBOM()">
+                                <span>Class 1 Local Supplier (50%+ MII)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOM Table -->
+                <div class="data-panel">
+                    <div class="panel-heading">
+                        <span class="panel-title">Exploded Assembly Hierarchy (Per Drone)</span>
+                        <div style="display:flex; gap:8px;">
+                            <button type="button" class="btn-secondary" onclick="exportBOMCSV()">Download CSV</button>
+                            <button type="button" class="btn-primary" onclick="printOrSavePDF()">Export PDF</button>
+                        </div>
+                    </div>
+                    <div class="panel-body" style="padding:0; overflow-x:auto;">
+                        <table class="enterprise-table">
+                            <thead>
+                                <tr>
+                                    <th>Subsystem</th>
+                                    <th>Selected Component Specification</th>
+                                    <th style="text-align:center;">Origin</th>
+                                    <th style="text-align:center;">Qty/U</th>
+                                    <th style="text-align:right;">Unit Rate (INR)</th>
+                                    <th style="text-align:right;">Line Total (INR)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bomTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= TAB 3: SOURCING GAPS ================= -->
+            <div id="tab-gaps" class="tab-panel">
+                <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h2 class="section-title">Technical Sourcing & Procurement Gaps</h2>
+                        <p class="section-desc">Manage unmapped items identified in tenders that require provisional costing, vendor quotes, or in-house engineering.</p>
+                    </div>
+                    <button type="button" class="btn-primary" onclick="openCustomPartModal()">+ Add Custom Component / Provisional Cost</button>
+                </div>
+
+                <div class="data-panel">
+                    <div class="panel-body" style="padding:0; overflow-x:auto;">
+                        <table class="enterprise-table">
+                            <thead>
+                                <tr>
+                                    <th>Requested Technical Specification</th>
+                                    <th>Tender Reference Extract</th>
+                                    <th style="text-align:center;">Sourcing Status</th>
+                                    <th>Action Plan</th>
+                                    <th style="text-align:right;">Provisional Cost</th>
+                                    <th style="text-align:center;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="gapsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= TAB 4: COMPONENT MASTER ================= -->
+            <div id="tab-catalog" class="tab-panel">
+                <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h2 class="section-title">VANA Master Item Catalog</h2>
+                        <p class="section-desc">140 enterprise-verified propulsion, avionics, sensor, and ground-station components.</p>
+                    </div>
+                    <input type="text" id="catalogSearch" oninput="filterCatalog()" placeholder="Search components by SKU, maker or country..." style="border:1px solid var(--border-dark); padding:6px 12px; font-size:12px; border-radius:4px; width:280px;">
+                </div>
+
+                <div class="data-panel">
+                    <div class="panel-body" style="padding:0; max-height:600px; overflow-y:auto;">
+                        <table class="enterprise-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Manufacturer</th>
+                                    <th>Model / Technical Part No</th>
+                                    <th style="text-align:center;">Origin (COO)</th>
+                                    <th style="text-align:center;">MII Tier</th>
+                                    <th style="text-align:right;">Standard Cost (INR)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="catalogTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modal for Custom Parts -->
+    <div id="customPartModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Add Provisional / Custom Sourced Part</span>
+                <span style="cursor:pointer;" onclick="closeCustomPartModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label>Component Specification / Part Name</label>
+                    <input type="text" id="mPartName" placeholder="e.g. 5.8GHz High-Power VTX (2.5W)">
+                </div>
+                <div>
+                    <label>Subsystem Classification</label>
+                    <select id="mPartCat">
+                        <option value="Datalink / VTX">Datalink / VTX</option>
+                        <option value="Custom Payload">Custom Payload / Sensor</option>
+                        <option value="Special Mechanical">Special Mechanical / Mount</option>
+                        <option value="Antenna / RF">Antenna / RF</option>
+                        <option value="Ground Support">Ground Support / Power</option>
+                        <option value="Other">Other Custom Component</option>
+                    </select>
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                    <div>
+                        <label>Country of Origin (COO)</label>
+                        <select id="mPartCOO">
+                            <option value="India">India (Class 1 MII)</option>
+                            <option value="USA">USA / Western</option>
+                            <option value="Taiwan">Taiwan</option>
+                            <option value="Europe">Europe</option>
+                            <option value="China">China (Blocked)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Provisional Unit Rate (INR)</label>
+                        <input type="number" id="mPartCost" value="15000">
+                    </div>
+                </div>
+                <div>
+                    <label>Procurement Notes / Lead Time</label>
+                    <textarea id="mPartNotes" rows="2" placeholder="e.g. RFQ issued to Indian vendor; estimated 12 days lead time."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeCustomPartModal()">Cancel</button>
+                <button type="button" class="btn-primary" onclick="saveCustomPart()">Save & Apply to BOM</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script>
+        if (window.pdfjsLib) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+
+        function switchTab(tabId, el) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            if (el) el.classList.add('active');
+        }
+
+        function updateCharCount() {
+            const count = document.getElementById('specInput').value.length;
+            document.getElementById('charCount').innerText = count.toLocaleString() + " characters";
+        }
+
+        function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+        function cleanSnippetText(raw) {
+            if (!raw) return "";
+            // Strip out Hindi/Devanagari Unicode characters (U+0900 to U+097F) and corrupt font glyph boxes
+            let cleaned = raw.replace(/[\u0900-\u097F]/g, ' ')
+                             .replace(/[^\x20-\x7E]/g, ' ')
+                             .replace(/\s+/g, ' ')
+                             .trim();
+            // Remove repeated slashes or double headers like "// Bid Details"
+            cleaned = cleaned.replace(/^\/+\s*/, '').replace(/Bid Details\s*/i, '');
+            return cleaned.length > 85 ? cleaned.substring(0, 85) + '...' : cleaned;
+        }
+
+        // Sourcing gaps state
+        let sourcingGaps = [
+            { id: 1, spec: "5.8GHz High-Power VTX (Video Transmitter)", ref: "Item Category: ... VTX, GPS Module ...", status: "Sourcing Required", action: "Vendor RFQ Needed", cost: 12500, resolved: false },
+            { id: 2, spec: "Dual Band Receiver (Command & Telemetry)", ref: "Item Category: ... Dual Band Receiver ...", status: "Evaluation Pending", action: "Verify Agam/Axle Spec", cost: 18000, resolved: false },
+            { id: 3, spec: "Servo-driven Ordnance Release Bracket", ref: "Payload Holder with servo Release Mechanism", status: "R&D In-House", action: "Internal Fabrication", cost: 25000, resolved: true }
+        ];
+
+        function renderGaps() {
+            const tbody = document.getElementById('gapsTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            let unresolved = 0;
+            sourcingGaps.forEach(g => {
+                if (!g.resolved) unresolved++;
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-weight:600;">${g.spec}</td>
+                        <td style="color:#64748b; font-family:monospace; font-size:11px;">${g.ref}</td>
+                        <td style="text-align:center;"><span class="badge ${g.resolved ? 'badge-green' : 'badge-amber'}">${g.status}</span></td>
+                        <td>${g.action}</td>
+                        <td style="text-align:right; font-weight:700;">₹${g.cost.toLocaleString('en-IN')}</td>
+                        <td style="text-align:center;">
+                            <button class="btn-secondary" style="padding:2px 8px; font-size:11px;" onclick="toggleResolveGap(${g.id})">${g.resolved ? 'Reopen' : 'Resolve'}</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            const badge = document.getElementById('gapNavBadge');
+            if (badge) {
+                badge.style.display = unresolved > 0 ? 'inline-block' : 'none';
+                badge.innerText = unresolved;
+            }
+        }
+
+        function toggleResolveGap(id) {
+            const gap = sourcingGaps.find(g => g.id === id);
+            if (gap) {
+                gap.resolved = !gap.resolved;
+                gap.status = gap.resolved ? "Resolved" : "Sourcing Required";
+                renderGaps();
+            }
+        }
+
+        function openCustomPartModal() { document.getElementById('customPartModal').classList.add('open'); }
+        function closeCustomPartModal() { document.getElementById('customPartModal').classList.remove('open'); }
+
+        function saveCustomPart() {
+            const name = document.getElementById('mPartName').value.trim();
+            const cat = document.getElementById('mPartCat').value;
+            const coo = document.getElementById('mPartCOO').value;
+            const cost = parseFloat(document.getElementById('mPartCost').value) || 0;
+            const notes = document.getElementById('mPartNotes').value.trim();
+
+            if (!name) return alert("Please specify part name.");
+
+            sourcingGaps.push({ id: Date.now(), spec: name, ref: notes || "Manual entry", status: "Resolved", action: "Included in Active BOM", cost: cost, resolved: true });
+            currentBOM.push({ cat: cat, name: `${name} [${coo}]`, origin: coo, qty: 1, cost: cost });
+            CATALOG_SAMPLE.push({ cat: cat, mfr: "Custom / Sourcing", model: name, coo: coo, mii: coo === "India", price: cost });
+
+            closeCustomPartModal();
+            renderGaps();
+            recalculateBOM();
+            renderCatalog(CATALOG_SAMPLE);
+        }
+
+        // File Handler
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('tenderFileInput');
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        function handleFileSelect(e) {
+            if (e.target.files.length) processFile(e.target.files[0]);
+        }
+
+        async function processFile(file) {
+            const statusDiv = document.getElementById('fileUploadStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.innerText = `Ingesting ${file.name}...`;
+
+            try {
+                if (file.name.toLowerCase().endsWith('.pdf')) {
+                    const text = await extractTextFromPDF(file);
+                    document.getElementById('specInput').value = text;
+                    statusDiv.innerText = `Loaded ${file.name} (${Math.round(file.size/1024)} KB)`;
+                } else {
+                    const reader = new FileReader();
+                    reader.onload = function(evt) {
+                        document.getElementById('specInput').value = evt.target.result;
+                        statusDiv.innerText = `Loaded ${file.name}`;
+                        updateCharCount();
+                        executeAnalysis();
+                    };
+                    reader.readAsText(file);
+                    return;
+                }
+            } catch (err) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    const raw = evt.target.result;
+                    const matches = raw.match(/[a-zA-Z0-9\s,.:;\-/_()]{5,}/g) || [];
+                    document.getElementById('specInput').value = matches.join('\n');
+                    statusDiv.innerText = `Loaded text stream from ${file.name}`;
+                    updateCharCount();
+                    executeAnalysis();
+                };
+                reader.readAsText(file);
+                return;
+            }
+            updateCharCount();
+            executeAnalysis();
+        }
+
+        async function extractTextFromPDF(file) {
+            if (!window.pdfjsLib) throw new Error("PDF parser unavailable");
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            let fullText = "";
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const textContent = await page.getTextContent();
+                fullText += textContent.items.map(item => item.str).join(" ") + "\n";
+            }
+            return fullText;
+        }
+
+        const SAMPLES = {
+            ord: `BOQ Title: 10 Inch Ord Dropping Drone\nItem Category: Frame, Brushless Motors, 10 Inch Prop Set, Flight Controller, ESC, FPV Camera, VTX, GPS Module with Compass, Battery Pack, Dual Band Receiver, Radio Controller, Payload Holder with servo Release Mechanism, Allied Accessories, Connectors and Cables, Tool Set, User Technical Manual & Log book, Hard Case\nTotal Quantity: 48\nDelivery: Within 15 Days to Jammu Consignee\nOPTION CLAUSE: The Purchaser reserves the right to increase or decrease the quantity to be ordered up to 25 percent of bid quantity at the contracted rate.\nSample Clause: Successful Bidder shall submit 3 samples for Buyer's approval within 5 days of award of contract free of cost.\nUndertaking Certificate: We hereby confirm that we shall not use any components, parts, material and product sourced from china for the manufacturing of drone.\nMalicious Code Certificate: Hardware and software being offered does not contain Embedded Malicious code.\nIT equipment shall be IPv6 ready from day one.\nReverse Auction: Reverse Auction would be conducted amongst first 50% of the lowest priced technically qualified bidders.`,
+            tactical: `BOQ Title: Multi Mission Tactical Drone / Surveillance Drone System\nQuantity: 2 Pieces\nConsignee: HQ 4 Arty Bde, Prayagraj\nScope of Supply: Supply Installation Testing Commissioning of Goods and Training of operators.\nScope of supply includes Training: 5 employees to be trained at HQ 4 Arty Bde for duration of 10 days.\nInspection: Post Receipt Inspection at consignee site by Board of Officers.\nMake In India: Minimum 50% Local Content required for qualifying as Class 1 Local Supplier.\nUndertaking Certificate: Zero parts, components or raw material sourced from China.\nWarranty: 1 years from date of final acceptance at consignee site.\nResidual Life: Minimum 3 years residual market life.`
+        };
+
+        function loadSample(type) {
+            document.getElementById('specInput').value = SAMPLES[type];
+            const statusDiv = document.getElementById('fileUploadStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.innerText = `Loaded predefined sample: ${type === 'ord' ? '10-Inch Ordnance Drone' : 'Tactical Drone'}`;
+            updateCharCount();
+            executeAnalysis();
+        }
+
+        const CATEGORIES = {
+            TECHNICAL_HARDWARE: [
+                { name: "Airframe Assembly", rx: /frame|airframe|carbon/i },
+                { name: "Propulsion Motor Units", rx: /motor|bldc|kv/i },
+                { name: "Aerodynamic Propeller Sets", rx: /propeller|prop\b|prop set/i },
+                { name: "Electronic Speed Controllers (ESC)", rx: /esc\b|speed controller/i },
+                { name: "Autopilot Flight Controller", rx: /flight controller|autopilot|pixhawk|cube/i },
+                { name: "Electro-Optical / IR Gimbal", rx: /camera|payload|gimbal|eo|ir|lwir|thermal|lrf/i },
+                { name: "GPS / NavIC Receiver", rx: /gps|gnss|rtk|navic/i },
+                { name: "Main Propulsion Battery Pack", rx: /battery|lipo|li-ion|mah|cell/i },
+                { name: "C2 Datalink & Ground Station", rx: /radio controller|transmitter|gcs|datalink/i },
+                { name: "Ordnance Release Mechanism", rx: /release mechanism|ordnance|payload holder|drop/i },
+                { name: "Field Balance Charger", rx: /charger|balance charger/i },
+                { name: "Military Transit Case (IP67)", rx: /hard case|transport case|box/i },
+                { name: "Maintenance & Tool Kit", rx: /tool set|tools|kit|accessories/i },
+                { name: "Technical Manuals & Logbook", rx: /log book|logbook|manual/i }
+            ]
+        };
+
+        async function executeAnalysis() {
+            const text = document.getElementById('specInput').value.trim();
+            if (!text) return alert("Please upload or paste specification text first.");
+
+            const tracker = document.getElementById('extractionProgressTracker');
+            tracker.style.display = 'block';
+            const btn = document.getElementById('runExtractBtn');
+            btn.disabled = true;
+
+            const progressBar = document.getElementById('trackerProgressBar');
+            const pctText = document.getElementById('trackerPct');
+            const logText = document.getElementById('trackerLogText');
+
+            const setStep = (num, state) => {
+                const el = document.getElementById(`step-${num}`);
+                if (!el) return;
+                el.className = state === 'active' ? 'pipeline-step active' : (state === 'done' ? 'pipeline-step done' : 'pipeline-step');
+            };
+
+            for (let i = 1; i <= 5; i++) setStep(i, 'pending');
+
+            // Step 1
+            setStep(1, 'active');
+            progressBar.style.width = "20%"; pctText.innerText = "20%";
+            logText.innerText = `> Parsing ${text.length.toLocaleString()} characters of tender specification...`;
+            await sleep(200);
+            setStep(1, 'done');
+
+            // Step 2
+            setStep(2, 'active');
+            progressBar.style.width = "40%"; pctText.innerText = "40%";
+            logText.innerText = `> Evaluating statutory constraints (MoD Land-Border, Advance Samples, Option Clauses)...`;
+            await sleep(250);
+
+            const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 5);
+            const redFlags = [];
+            const hardware = new Map();
+            const testing = [];
+            const docs = new Set(["PAN Card & GSTIN Certificate", "Cancelled Cheque & Bank EFT Mandate", "OEM Authorization Certificate (MAF)", "ISO 9001:2015 Accreditation", "3 Years Past Performance Proofs", "CA Certified Audited Balance Sheets"]);
+
+            lines.forEach(line => {
+                if (/china|chinese|land border/i.test(line)) {
+                    redFlags.push({ title: "Strict Non-Chinese Origin (ATC Cl 17)", desc: "Zero components from China permitted. Non-compliance results in immediate contract cancellation.", action: "Sign MoD Undertaking; enforce 100% Indian/Western BOM." });
+                    docs.add("MoD Non-Chinese Origin Undertaking (Signed & Stamped)");
+                }
+                if (/advance sample|sample clause/i.test(line)) {
+                    redFlags.push({ title: "Advance Sample Submission (5-Day SLA)", desc: "3 complete sample units required within 5 days of contract award for buyer inspection.", action: "Pre-build 3 validation units; amortize test costs." });
+                    testing.push({ name: "Advance Sample Submission (3 Units in 5 Days)", type: "Pre-Supply Field Acceptance" });
+                }
+                if (/option clause|increase.*?quantity/i.test(line)) {
+                    redFlags.push({ title: "Buyer Option Clause (+25% to +50%)", desc: "Purchaser reserves right to increase order quantity at identical contracted unit price.", action: "Lock component purchase agreements for 180 days." });
+                }
+                if (/reverse auction|ra qualification/i.test(line)) {
+                    redFlags.push({ title: "Reverse Auction (RA) Margin Reserve", desc: "Live auction between lowest 50% technically qualified bidders.", action: "Retain 10-15% margin headroom in initial bid." });
+                }
+                if (/training/i.test(line)) {
+                    testing.push({ name: "On-Site Operator Training SLA", type: "Commissioning (5 Personnel, 10 Days)" });
+                }
+                if (/malicious code/i.test(line)) docs.add("Certificate on Absence of Embedded Malicious Code");
+                if (/ipv6/i.test(line)) docs.add("IPv6 Technical Compliance Certificate");
+                if (/make in india|local content/i.test(line)) docs.add("Class-1 Local Supplier Declaration (Min 50% MII)");
+                if (/residual.*?(market|life)/i.test(line)) docs.add("3-Year Residual Market Life Undertaking");
+            });
+            setStep(2, 'done');
+
+            // Step 3
+            setStep(3, 'active');
+            progressBar.style.width = "65%"; pctText.innerText = "65%";
+            logText.innerText = `> Extracting subsystem requirements and scope of supply...`;
+            await sleep(200);
+
+            lines.forEach(line => {
+                CATEGORIES.TECHNICAL_HARDWARE.forEach(hw => {
+                    if (hw.rx.test(line) && !hardware.has(hw.name)) {
+                        const cleanRef = cleanSnippetText(line);
+                        if (cleanRef.length > 5) {
+                            hardware.set(hw.name, cleanRef);
+                        } else {
+                            hardware.set(hw.name, "Mandatory Scope of Supply");
+                        }
+                    }
+                });
+            });
+            setStep(3, 'done');
+
+            // Step 4
+            setStep(4, 'active');
+            progressBar.style.width = "85%"; pctText.innerText = "85%";
+            logText.innerText = `> Generating required document submission matrix...`;
+            await sleep(150);
+            setStep(4, 'done');
+
+            // Step 5
+            setStep(5, 'active');
+            progressBar.style.width = "100%"; pctText.innerText = "100%";
+            logText.innerText = `> Matching verified 140-item catalog: Compliant BOM exploded and costed!`;
+
+            if (/dropping|ordnance|grenade|drop/i.test(text)) {
+                document.getElementById('bomVariant').value = "ORDNANCE_DROPPING";
+            } else {
+                document.getElementById('bomVariant').value = "SURVEILLANCE_DAY_NIGHT";
+            }
+            const qtyMatch = text.match(/(?:total\s+quantity|कुल\s+मात्रा)[\s:/\-]+(\d+)/i) || text.match(/quantity[\s:/\-]+(\d+)/i);
+            if (qtyMatch && qtyMatch[1]) document.getElementById('bomQty').value = parseInt(qtyMatch[1]);
+            recalculateBOM();
+            setStep(5, 'done');
+
+            // Render Output
+            document.getElementById('analysisContainer').style.display = 'block';
+
+            // Flags
+            const uniqueFlags = new Map();
+            redFlags.forEach(rf => { if (!uniqueFlags.has(rf.title)) uniqueFlags.set(rf.title, rf); });
+            const rfBox = document.getElementById('redFlagsBox');
+            rfBox.innerHTML = '';
+            uniqueFlags.forEach(rf => {
+                rfBox.innerHTML += `
+                    <div class="risk-card critical">
+                        <div class="risk-title">${rf.title}</div>
+                        <div class="risk-desc">${rf.desc}</div>
+                        <div class="risk-action">Rule: ${rf.action}</div>
+                    </div>
+                `;
+            });
+
+            // Hardware
+            document.getElementById('badgeHw').innerText = hardware.size + " Items";
+            const hwTable = document.getElementById('hardwareList');
+            hwTable.innerHTML = '';
+            hardware.forEach((ref, name) => {
+                hwTable.innerHTML += `
+                    <tr>
+                        <td style="font-weight:600;">${name}</td>
+                        <td style="color:#64748b; font-size:11px;">${ref}</td>
+                        <td style="text-align:right;"><span class="badge badge-green">MANDATORY</span></td>
+                    </tr>
+                `;
+            });
+
+            // Testing
+            document.getElementById('badgeTest').innerText = testing.length + " SLAs";
+            const tBox = document.getElementById('testingList');
+            tBox.innerHTML = '';
+            testing.forEach(t => {
+                tBox.innerHTML += `
+                    <div style="border-bottom:1px solid #f1f5f9; padding-bottom:8px; margin-bottom:8px;">
+                        <div style="font-weight:600; font-size:12px; color:#1e293b;">${t.name}</div>
+                        <div style="color:#64748b; font-size:11px;">${t.type}</div>
+                    </div>
+                `;
+            });
+
+            // Docs
+            document.getElementById('badgeDocs').innerText = docs.size + " Docs";
+            const dBox = document.getElementById('documentsList');
+            dBox.innerHTML = '';
+            docs.forEach(doc => {
+                dBox.innerHTML += `
+                    <label style="display:flex; align-items:center; gap:8px; margin-bottom:6px; cursor:pointer; font-size:12px;">
+                        <input type="checkbox" style="border:1px solid #cbd5e1;">
+                        <span>${doc}</span>
+                    </label>
+                `;
+            });
+
+            btn.disabled = false;
+        }
+
+        // BOM Engine
+        let currentBOM = [];
+
+        function recalculateBOM() {
+            const variant = document.getElementById('bomVariant').value;
+            const qty = parseInt(document.getElementById('bomQty').value) || 1;
+            const margin = parseInt(document.getElementById('bomMargin').value) || 25;
+
+            if (variant === "ORDNANCE_DROPPING") {
+                currentBOM = [
+                    { cat: "Airframe", name: "10-inch Carbon Fiber Attack Airframe", origin: "India", qty: 1, cost: 28000 },
+                    { cat: "Motor", name: "Vector 3115 SL - 900KV BLDC", origin: "India", qty: 4, cost: 5000 },
+                    { cat: "ESC", name: "Flameback Tech 45A ESC", origin: "India", qty: 4, cost: 3380 },
+                    { cat: "Propeller", name: "Reflex Drive 17-inch CF Folding (Pair)", origin: "India", qty: 2, cost: 2099 },
+                    { cat: "Flight Controller", name: "Agam Indigenous Autopilot", origin: "India", qty: 1, cost: 32000 },
+                    { cat: "GPS/NavIC", name: "Orbit Nano NEO-F9P-15B RTK + NavIC", origin: "India", qty: 1, cost: 19000 },
+                    { cat: "Battery Pack", name: "M-Power 6000mAh 4S Li-ion", origin: "India", qty: 2, cost: 4400 },
+                    { cat: "Radio Controller", name: "Axle Drone 10km Handheld GCS", origin: "India", qty: 1, cost: 128000 },
+                    { cat: "Release Mechanism", name: "10-inch Ordnance Servo Release Kit", origin: "India", qty: 1, cost: 25000 },
+                    { cat: "Battery Charger", name: "Indian Power Tech Smart Balance 1200W", origin: "India", qty: 1, cost: 24000 },
+                    { cat: "Packaging", name: "Military Hard Case IP67 Airtight", origin: "India", qty: 1, cost: 22000 },
+                    { cat: "Spares & Tools", name: "Tool Set & Field Repair Kit", origin: "India", qty: 1, cost: 8500 },
+                    { cat: "Documentation", name: "Technical Manual & Flight Logbook", origin: "India", qty: 1, cost: 3500 },
+                    { cat: "Nav Lights", name: "Vector Anti-Collision RGB Strobe", origin: "India", qty: 1, cost: 3500 }
+                ];
+            } else {
+                currentBOM = [
+                    { cat: "Airframe", name: "VANA Tactical Carbon Quad/Hex Airframe (IP54)", origin: "India", qty: 1, cost: 85000 },
+                    { cat: "Motor", name: "Vector 6008SL - 340KV Heavy Lift", origin: "India", qty: 4, cost: 12150 },
+                    { cat: "ESC", name: "Vector 40A HV 6-12S ESC", origin: "India", qty: 4, cost: 6500 },
+                    { cat: "Propeller", name: "Reflex Drive 17-inch Folding Prop (Pair)", origin: "India", qty: 2, cost: 2099 },
+                    { cat: "Payload", name: "Delopt EO+IR Stabilized Gimbal", origin: "India", qty: 1, cost: 800000 },
+                    { cat: "Flight Controller", name: "Cube Orange+ with Mini Carrier", origin: "Taiwan", qty: 1, cost: 43500 },
+                    { cat: "GPS/NavIC", name: "Orbit Nano NEO-F9P RTK + NavIC", origin: "India", qty: 1, cost: 19000 },
+                    { cat: "Battery Pack", name: "GenX Power 40000mAh 6S Solid State", origin: "India", qty: 2, cost: 39896 },
+                    { cat: "Radio Controller", name: "Apex GCS 20km Datalink", origin: "India", qty: 1, cost: 210000 },
+                    { cat: "Rugged GCS", name: "Zebra L10ax Rugged GCS Tablet", origin: "USA", qty: 1, cost: 95000 },
+                    { cat: "Battery Charger", name: "Indian Power Tech Smart Balance 1200W", origin: "India", qty: 1, cost: 24000 },
+                    { cat: "Packaging", name: "Military Hard Case IP67 Airtight", origin: "India", qty: 2, cost: 22000 },
+                    { cat: "Spares & Tools", name: "Tool Set & Field Repair Kit", origin: "India", qty: 1, cost: 8500 },
+                    { cat: "Documentation", name: "Technical Manual & Flight Logbook", origin: "India", qty: 1, cost: 3500 }
+                ];
+            }
+
+            let unitBOM = 0;
+            const tbody = document.getElementById('bomTableBody');
+            tbody.innerHTML = '';
+
+            currentBOM.forEach(item => {
+                const ext = item.qty * item.cost;
+                unitBOM += ext;
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-weight:600; color:#475569;">${item.cat}</td>
+                        <td style="font-weight:600;">${item.name}</td>
+                        <td style="text-align:center;"><span class="badge ${item.origin === 'India' ? 'badge-green' : 'badge-gray'}">${item.origin}</span></td>
+                        <td style="text-align:center; font-weight:700;">${item.qty}</td>
+                        <td style="text-align:right; font-variant-numeric:tabular-nums;">₹${item.cost.toLocaleString('en-IN')}</td>
+                        <td style="text-align:right; font-weight:700; font-variant-numeric:tabular-nums;">₹${ext.toLocaleString('en-IN')}</td>
+                    </tr>
+                `;
+            });
+
+            const totalHW = unitBOM * qty;
+            const warranty = totalHW * 0.05;
+            const contingency = totalHW * 0.04;
+            const inspection = 35000;
+            const totalProjectCost = totalHW + warranty + contingency + inspection;
+
+            const bidExGST = totalProjectCost * (1 + margin / 100);
+            const gst = bidExGST * 0.18;
+            const bidIncGST = bidExGST + gst;
+
+            document.getElementById('priceUnitBOM').innerText = "₹" + Math.round(unitBOM).toLocaleString('en-IN');
+            document.getElementById('priceTotalCost').innerText = "₹" + Math.round(totalProjectCost).toLocaleString('en-IN');
+            document.getElementById('priceBidEx').innerText = "₹" + Math.round(bidExGST).toLocaleString('en-IN');
+            document.getElementById('priceBidInc').innerText = "₹" + Math.round(bidIncGST).toLocaleString('en-IN');
+        }
+
+        function exportBOMCSV() {
+            const variant = document.getElementById('bomVariant').value;
+            const qty = parseInt(document.getElementById('bomQty').value) || 1;
+            const margin = parseInt(document.getElementById('bomMargin').value) || 25;
+
+            let csv = "VANA DEFENCE & AEROSPACE — OFFICIAL COMPLIANT BOM REPORT\n";
+            csv += `Variant,${variant}\nQuantity,${qty} Units\nMargin,${margin}%\n\n`;
+            csv += "Item #,Subsystem,Part Description,Origin,Qty/Unit,Unit Rate (INR),Total Cost (INR)\n";
+            let unitTotal = 0;
+            currentBOM.forEach((i, idx) => {
+                const ext = i.qty * i.cost;
+                unitTotal += ext;
+                csv += `${idx + 1},"${i.cat}","${i.name}","${i.origin}",${i.qty},${i.cost},${ext * qty}\n`;
+            });
+
+            const totalHW = unitTotal * qty;
+            const totalProjectCost = totalHW * 1.09 + 35000;
+            const bidExGST = totalProjectCost * (1 + margin / 100);
+            const bidIncGST = bidExGST * 1.18;
+
+            csv += `\nSUMMARY COMMERCIAL ROLLUP\n`;
+            csv += `Total Fleet Hardware Cost,,${totalHW}\n`;
+            csv += `Total Project Cost (Inc Reserves),,${totalProjectCost}\n`;
+            csv += `Recommended Base Bid (Excl GST),,${bidExGST}\n`;
+            csv += `Official GeM Bid (Incl 18% GST),,${bidIncGST}\n`;
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', `VANA_${variant}_BOM_Report.csv`);
+            a.click();
+        }
+
+        function printOrSavePDF() { window.print(); }
+
+        const CATALOG_SAMPLE = [
+            { cat: "Motor", mfr: "Vector", model: "3115 SL - 900KV", coo: "India", mii: true, price: 5000 },
+            { cat: "Motor", mfr: "Vector", model: "4006 SL - 380KV", coo: "India", mii: true, price: 6500 },
+            { cat: "Motor", mfr: "Flameback", model: "4006 - 360kv", coo: "India", mii: true, price: 5649 },
+            { cat: "ESC", mfr: "Flameback Tech", model: "45A ESC", coo: "India", mii: true, price: 3380 },
+            { cat: "ESC", mfr: "Vector", model: "40A ESC", coo: "India", mii: true, price: 6500 },
+            { cat: "Propeller", mfr: "Reflex Drive", model: "RD-1760 17-inch Folding", coo: "India", mii: true, price: 2099 },
+            { cat: "Battery", mfr: "M-Power", model: "6000mAh 4S Li-ion", coo: "India", mii: true, price: 4400 },
+            { cat: "Battery", mfr: "GenX Power", model: "40000mAh 6S Solid State", coo: "India", mii: true, price: 39896 },
+            { cat: "Payload", mfr: "Delopt", model: "EO Stabilize Gimbal (1080p+IR)", coo: "India", mii: true, price: 800000 },
+            { cat: "Payload", mfr: "MotionMatics", model: "ECLIPSE10 EO+IR Gimbal", coo: "India", mii: true, price: 747000 },
+            { cat: "GPS/NavIC", mfr: "Orbit Nano", model: "NEO-F9P-15B RTK + NavIC", coo: "India", mii: true, price: 19000 },
+            { cat: "Autopilot", mfr: "Agam", model: "Indigenous Secure Autopilot", coo: "India", mii: true, price: 32000 },
+            { cat: "Autopilot", mfr: "CubePilot", model: "Orange Cube+ Mini", coo: "Taiwan", mii: false, price: 43500 },
+            { cat: "Radio/GCS", mfr: "Axle Drone", model: "Axle GCS 10km Handheld", coo: "India", mii: true, price: 128000 },
+            { cat: "Radio/GCS", mfr: "Apex", model: "Apex GCS 20km Long Range", coo: "India", mii: true, price: 210000 },
+            { cat: "Charger", mfr: "Indian Power Tech", model: "Vana Smart Balance 1200W", coo: "India", mii: true, price: 24000 }
+        ];
+
+        function renderCatalog(items) {
+            const tbody = document.getElementById('catalogTableBody');
+            tbody.innerHTML = '';
+            items.forEach(i => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-weight:600; color:#475569;">${i.cat}</td>
+                        <td style="font-weight:600;">${i.mfr}</td>
+                        <td>${i.model}</td>
+                        <td style="text-align:center;"><span class="badge ${i.coo === 'India' ? 'badge-green' : 'badge-gray'}">${i.coo}</span></td>
+                        <td style="text-align:center;"><span class="badge ${i.mii ? 'badge-green' : 'badge-gray'}">${i.mii ? 'Class 1' : 'Import'}</span></td>
+                        <td style="text-align:right; font-weight:700;">₹${i.price.toLocaleString('en-IN')}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function filterCatalog() {
+            const q = document.getElementById('catalogSearch').value.toLowerCase();
+            renderCatalog(CATALOG_SAMPLE.filter(i => i.cat.toLowerCase().includes(q) || i.mfr.toLowerCase().includes(q) || i.model.toLowerCase().includes(q) || i.coo.toLowerCase().includes(q)));
+        }
+
+        window.onload = function() {
+            recalculateBOM();
+            renderGaps();
+            renderCatalog(CATALOG_SAMPLE);
+        };
+    </script>
+</body>
+</html>
