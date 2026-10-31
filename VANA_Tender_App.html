@@ -607,6 +607,10 @@
             </div>
         </div>
         <div class="status-indicators">
+            <div class="system-pill" style="cursor:pointer;" onclick="openGuideModal()">
+                <i class="fas fa-circle-question" style="color:#0284c7;"></i>
+                <span style="font-weight:700; color:#0369a1;">User Guide & Help</span>
+            </div>
             <div class="system-pill">
                 <span class="pill-dot"></span>
                 <span>MoD Procurement Standard</span>
@@ -649,6 +653,19 @@
                 <div class="section-header">
                     <h2 class="section-title">Technical Specification & Tender Ingestion</h2>
                     <p class="section-desc">Parse unstructured GeM tenders, extract engineering constraints, identify non-compliance risks, and generate mandatory deliverable checklists.</p>
+                </div>
+
+                <!-- Feature Guide Card -->
+                <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:6px; padding:12px 16px; margin-bottom:16px; font-size:12px; color:#0369a1; display:flex; align-items:flex-start; gap:10px;">
+                    <i class="fas fa-circle-info" style="font-size:16px; margin-top:2px; color:#0284c7; flex-shrink:0;"></i>
+                    <div style="line-height:1.5;">
+                        <strong style="color:#0c4a6e;">How to use this feature:</strong>
+                        <ol style="margin-left:18px; margin-top:4px; list-style-type:decimal;">
+                            <li><strong>Upload Document:</strong> Drag & drop any GeM Tender PDF or Technical Specification file into the dashed box (or click to browse).</li>
+                            <li><strong>Or Load Demo Sample:</strong> Click <em>"Load 10-Inch Ordnance Drone"</em> or <em>"Load Tactical Drone"</em> to test immediately.</li>
+                            <li><strong>Execute:</strong> Click <em>"Execute Requirement Extraction"</em>. The system scans all clauses, strips bilingual formatting, flags rejection risks (like China bans and 5-day samples), and lists all deliverables.</li>
+                        </ol>
+                    </div>
                 </div>
 
                 <div class="data-panel">
@@ -760,6 +777,19 @@
                     <p class="section-desc">Automated derivation of 100% Non-Chinese compliant components, statutory reserves, reverse auction buffers, and official GeM quotation figures.</p>
                 </div>
 
+                <!-- Feature Guide Card -->
+                <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:6px; padding:12px 16px; margin-bottom:16px; font-size:12px; color:#0369a1; display:flex; align-items:flex-start; gap:10px;">
+                    <i class="fas fa-circle-info" style="font-size:16px; margin-top:2px; color:#0284c7; flex-shrink:0;"></i>
+                    <div style="line-height:1.5;">
+                        <strong style="color:#0c4a6e;">How to use this feature:</strong>
+                        <ol style="margin-left:18px; margin-top:4px; list-style-type:decimal;">
+                            <li><strong>Select Variant & Qty:</strong> Choose your drone variant and set tender quantity. Cost totals and BOM recalculate automatically.</li>
+                            <li><strong>Understand Pricing Cards:</strong> <em>Recommended Bid (Base)</em> is your internal revenue target without taxes. <em>Official GeM Bid</em> includes 18% GST (the exact figure to enter on GeM).</li>
+                            <li><strong>Export & Share:</strong> Click <em>"Download CSV"</em> for a full Excel spreadsheet, or <em>"Export PDF"</em> for a print-ready executive sheet.</li>
+                        </ol>
+                    </div>
+                </div>
+
                 <!-- Financial Metrics -->
                 <div class="metrics-grid">
                     <div class="metric-box">
@@ -854,6 +884,19 @@
                     <button type="button" class="btn-primary" onclick="openCustomPartModal()">+ Add Custom Component / Provisional Cost</button>
                 </div>
 
+                <!-- Feature Guide Card -->
+                <div style="background:#fefce8; border:1px solid #fef08a; border-radius:6px; padding:12px 16px; margin-bottom:16px; font-size:12px; color:#854d0e; display:flex; align-items:flex-start; gap:10px;">
+                    <i class="fas fa-triangle-exclamation" style="font-size:16px; margin-top:2px; color:#ca8a04; flex-shrink:0;"></i>
+                    <div style="line-height:1.5;">
+                        <strong style="color:#713f12;">How to resolve unmapped tender requirements:</strong>
+                        <ol style="margin-left:18px; margin-top:4px; list-style-type:decimal;">
+                            <li><strong>Identify Gaps:</strong> When a tender asks for something not in VANA's catalog (e.g. 5.8GHz VTX or custom release bracket), it appears here.</li>
+                            <li><strong>Add Provisional Cost:</strong> Click <em>"+ Add Custom Component"</em> to assign a budget price so sales can quote without waiting for long RFQs.</li>
+                            <li><strong>BOM Auto-Injection:</strong> Custom items are immediately added to the active BOM and saved into the Master Catalog for future bids.</li>
+                        </ol>
+                    </div>
+                </div>
+
                 <div class="data-panel">
                     <div class="panel-body" style="padding:0; overflow-x:auto;">
                         <table class="enterprise-table">
@@ -883,6 +926,15 @@
                     <input type="text" id="catalogSearch" oninput="filterCatalog()" placeholder="Search components by SKU, maker or country..." style="border:1px solid var(--border-dark); padding:6px 12px; font-size:12px; border-radius:4px; width:280px;">
                 </div>
 
+                <!-- Feature Guide Card -->
+                <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:6px; padding:12px 16px; margin-bottom:16px; font-size:12px; color:#475569; display:flex; align-items:flex-start; gap:10px;">
+                    <i class="fas fa-database" style="font-size:16px; margin-top:2px; color:#64748b; flex-shrink:0;"></i>
+                    <div style="line-height:1.5;">
+                        <strong style="color:#0f172a;">How to search components:</strong>
+                        <p style="margin-top:2px;">Type any manufacturer (e.g. <em>Vector, Flameback, Delopt</em>), component category (<em>Motor, Battery, Gimbal</em>), or country into the search bar to inspect specifications, standard costs, and MII Class-1 compliance tags.</p>
+                    </div>
+                </div>
+
                 <div class="data-panel">
                     <div class="panel-body" style="padding:0; max-height:600px; overflow-y:auto;">
                         <table class="enterprise-table">
@@ -903,6 +955,34 @@
             </div>
 
         </main>
+    </div>
+
+    <!-- Comprehensive User Guide Modal -->
+    <div id="guideModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <span style="display:flex; align-items:center; gap:8px;">
+                    <i class="fas fa-book-open" style="color:#0284c7;"></i> VANA Workspace User Guide
+                </span>
+                <span style="cursor:pointer; font-size:18px;" onclick="closeGuideModal()">&times;</span>
+            </div>
+            <div class="modal-body" style="line-height:1.6; max-height:480px; overflow-y:auto;">
+                <h4 style="font-weight:700; color:#0f172a; margin-bottom:4px;">1. Tender Ingestion & Requirement Extraction</h4>
+                <p style="color:#475569; margin-bottom:12px;">Drag and drop any official GeM Tender PDF. The engine tokenizes the document, strips out unmapped Devanagari/Hindi font boxes, detects strict statutory clauses (such as <em>Zero Chinese Origin</em>, <em>5-Day Advance Samples</em>, and <em>Reverse Auction</em> rules), and maps requirements to mandatory hardware, testing, and document checklists.</p>
+
+                <h4 style="font-weight:700; color:#0f172a; margin-bottom:4px;">2. Compliant BOM Explosion & Cost Rollup</h4>
+                <p style="color:#475569; margin-bottom:12px;">The system automatically builds a 100% Non-Chinese compliant BOM using verified parts from your 140-item master sheet. It calculates the raw hardware BOM, adds a 5% Warranty Reserve, 4% Contingency, and an Officer Inspection buffer, giving you both the <em>Base Bid (Company Revenue)</em> and the <em>Official GeM Bid (including 18% GST)</em>.</p>
+
+                <h4 style="font-weight:700; color:#0f172a; margin-bottom:4px;">3. Unmapped Items & Sourcing Gaps</h4>
+                <p style="color:#475569; margin-bottom:12px;">If a tender asks for an exotic item or custom bracket not found in VANA's current catalog, enter a provisional budget price so the quotation is never delayed. Once added, it injects into the active BOM and saves permanently to your catalog.</p>
+
+                <h4 style="font-weight:700; color:#0f172a; margin-bottom:4px;">4. Exporting Deliverables</h4>
+                <p style="color:#475569;">Click <em>"Download CSV"</em> for an Excel-compatible spreadsheet, or <em>"Export PDF"</em> for a clean, formal specification document.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-primary" onclick="closeGuideModal()">Got it</button>
+            </div>
+        </div>
     </div>
 
     <!-- Modal for Custom Parts -->
@@ -988,33 +1068,42 @@
             return cleaned.length > 85 ? cleaned.substring(0, 85) + '...' : cleaned;
         }
 
-        // Sourcing gaps state
-        let sourcingGaps = [
-            { id: 1, spec: "5.8GHz High-Power VTX (Video Transmitter)", ref: "Item Category: ... VTX, GPS Module ...", status: "Sourcing Required", action: "Vendor RFQ Needed", cost: 12500, resolved: false },
-            { id: 2, spec: "Dual Band Receiver (Command & Telemetry)", ref: "Item Category: ... Dual Band Receiver ...", status: "Evaluation Pending", action: "Verify Agam/Axle Spec", cost: 18000, resolved: false },
-            { id: 3, spec: "Servo-driven Ordnance Release Bracket", ref: "Payload Holder with servo Release Mechanism", status: "R&D In-House", action: "Internal Fabrication", cost: 25000, resolved: true }
-        ];
+        // Sourcing gaps state - starts completely empty
+        let sourcingGaps = [];
 
         function renderGaps() {
             const tbody = document.getElementById('gapsTableBody');
             if (!tbody) return;
             tbody.innerHTML = '';
             let unresolved = 0;
-            sourcingGaps.forEach(g => {
-                if (!g.resolved) unresolved++;
-                tbody.innerHTML += `
+
+            if (sourcingGaps.length === 0) {
+                tbody.innerHTML = `
                     <tr>
-                        <td style="font-weight:600;">${g.spec}</td>
-                        <td style="color:#64748b; font-family:monospace; font-size:11px;">${g.ref}</td>
-                        <td style="text-align:center;"><span class="badge ${g.resolved ? 'badge-green' : 'badge-amber'}">${g.status}</span></td>
-                        <td>${g.action}</td>
-                        <td style="text-align:right; font-weight:700;">₹${g.cost.toLocaleString('en-IN')}</td>
-                        <td style="text-align:center;">
-                            <button class="btn-secondary" style="padding:2px 8px; font-size:11px;" onclick="toggleResolveGap(${g.id})">${g.resolved ? 'Reopen' : 'Resolve'}</button>
+                        <td colspan="6" style="text-align:center; padding:32px 16px; color:#94a3b8; font-style:italic;">
+                            <i class="fas fa-inbox" style="font-size:24px; display:block; margin-bottom:8px; color:#cbd5e1;"></i>
+                            No sourcing gaps recorded. Upload a tender or click "+ Add Custom Component" to record unmapped requirements.
                         </td>
                     </tr>
                 `;
-            });
+            } else {
+                sourcingGaps.forEach(g => {
+                    if (!g.resolved) unresolved++;
+                    tbody.innerHTML += `
+                        <tr>
+                            <td style="font-weight:600;">${g.spec}</td>
+                            <td style="color:#64748b; font-family:monospace; font-size:11px;">${g.ref}</td>
+                            <td style="text-align:center;"><span class="badge ${g.resolved ? 'badge-green' : 'badge-amber'}">${g.status}</span></td>
+                            <td>${g.action}</td>
+                            <td style="text-align:right; font-weight:700;">₹${g.cost.toLocaleString('en-IN')}</td>
+                            <td style="text-align:center;">
+                                <button class="btn-secondary" style="padding:2px 8px; font-size:11px;" onclick="toggleResolveGap(${g.id})">${g.resolved ? 'Reopen' : 'Resolve'}</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            }
+
             const badge = document.getElementById('gapNavBadge');
             if (badge) {
                 badge.style.display = unresolved > 0 ? 'inline-block' : 'none';
@@ -1033,6 +1122,9 @@
 
         function openCustomPartModal() { document.getElementById('customPartModal').classList.add('open'); }
         function closeCustomPartModal() { document.getElementById('customPartModal').classList.remove('open'); }
+
+        function openGuideModal() { document.getElementById('guideModal').classList.add('open'); }
+        function closeGuideModal() { document.getElementById('guideModal').classList.remove('open'); }
 
         function saveCustomPart() {
             const name = document.getElementById('mPartName').value.trim();
@@ -1250,6 +1342,7 @@
             }
             const qtyMatch = text.match(/(?:total\s+quantity|कुल\s+मात्रा)[\s:/\-]+(\d+)/i) || text.match(/quantity[\s:/\-]+(\d+)/i);
             if (qtyMatch && qtyMatch[1]) document.getElementById('bomQty').value = parseInt(qtyMatch[1]);
+            tenderHasBeenAnalyzed = true;
             recalculateBOM();
             setStep(5, 'done');
 
@@ -1314,10 +1407,30 @@
             btn.disabled = false;
         }
 
-        // BOM Engine
+        // BOM Engine - starts empty until tender analyzed
         let currentBOM = [];
+        let tenderHasBeenAnalyzed = false;
 
         function recalculateBOM() {
+            const tbody = document.getElementById('bomTableBody');
+            if (!tbody) return;
+
+            if (!tenderHasBeenAnalyzed) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:36px 16px; color:#94a3b8; font-style:italic;">
+                            <i class="fas fa-file-invoice" style="font-size:24px; display:block; margin-bottom:8px; color:#cbd5e1;"></i>
+                            No tender loaded. Please go to "1. Tender Requirements", upload a GeM PDF or load a sample to generate the BOM.
+                        </td>
+                    </tr>
+                `;
+                document.getElementById('priceUnitBOM').innerText = "₹0";
+                document.getElementById('priceTotalCost').innerText = "₹0";
+                document.getElementById('priceBidEx').innerText = "₹0";
+                document.getElementById('priceBidInc').innerText = "₹0";
+                return;
+            }
+
             const variant = document.getElementById('bomVariant').value;
             const qty = parseInt(document.getElementById('bomQty').value) || 1;
             const margin = parseInt(document.getElementById('bomMargin').value) || 25;
@@ -1359,7 +1472,6 @@
             }
 
             let unitBOM = 0;
-            const tbody = document.getElementById('bomTableBody');
             tbody.innerHTML = '';
 
             currentBOM.forEach(item => {

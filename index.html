@@ -1068,33 +1068,42 @@
             return cleaned.length > 85 ? cleaned.substring(0, 85) + '...' : cleaned;
         }
 
-        // Sourcing gaps state
-        let sourcingGaps = [
-            { id: 1, spec: "5.8GHz High-Power VTX (Video Transmitter)", ref: "Item Category: ... VTX, GPS Module ...", status: "Sourcing Required", action: "Vendor RFQ Needed", cost: 12500, resolved: false },
-            { id: 2, spec: "Dual Band Receiver (Command & Telemetry)", ref: "Item Category: ... Dual Band Receiver ...", status: "Evaluation Pending", action: "Verify Agam/Axle Spec", cost: 18000, resolved: false },
-            { id: 3, spec: "Servo-driven Ordnance Release Bracket", ref: "Payload Holder with servo Release Mechanism", status: "R&D In-House", action: "Internal Fabrication", cost: 25000, resolved: true }
-        ];
+        // Sourcing gaps state - starts completely empty
+        let sourcingGaps = [];
 
         function renderGaps() {
             const tbody = document.getElementById('gapsTableBody');
             if (!tbody) return;
             tbody.innerHTML = '';
             let unresolved = 0;
-            sourcingGaps.forEach(g => {
-                if (!g.resolved) unresolved++;
-                tbody.innerHTML += `
+
+            if (sourcingGaps.length === 0) {
+                tbody.innerHTML = `
                     <tr>
-                        <td style="font-weight:600;">${g.spec}</td>
-                        <td style="color:#64748b; font-family:monospace; font-size:11px;">${g.ref}</td>
-                        <td style="text-align:center;"><span class="badge ${g.resolved ? 'badge-green' : 'badge-amber'}">${g.status}</span></td>
-                        <td>${g.action}</td>
-                        <td style="text-align:right; font-weight:700;">₹${g.cost.toLocaleString('en-IN')}</td>
-                        <td style="text-align:center;">
-                            <button class="btn-secondary" style="padding:2px 8px; font-size:11px;" onclick="toggleResolveGap(${g.id})">${g.resolved ? 'Reopen' : 'Resolve'}</button>
+                        <td colspan="6" style="text-align:center; padding:32px 16px; color:#94a3b8; font-style:italic;">
+                            <i class="fas fa-inbox" style="font-size:24px; display:block; margin-bottom:8px; color:#cbd5e1;"></i>
+                            No sourcing gaps recorded. Upload a tender or click "+ Add Custom Component" to record unmapped requirements.
                         </td>
                     </tr>
                 `;
-            });
+            } else {
+                sourcingGaps.forEach(g => {
+                    if (!g.resolved) unresolved++;
+                    tbody.innerHTML += `
+                        <tr>
+                            <td style="font-weight:600;">${g.spec}</td>
+                            <td style="color:#64748b; font-family:monospace; font-size:11px;">${g.ref}</td>
+                            <td style="text-align:center;"><span class="badge ${g.resolved ? 'badge-green' : 'badge-amber'}">${g.status}</span></td>
+                            <td>${g.action}</td>
+                            <td style="text-align:right; font-weight:700;">₹${g.cost.toLocaleString('en-IN')}</td>
+                            <td style="text-align:center;">
+                                <button class="btn-secondary" style="padding:2px 8px; font-size:11px;" onclick="toggleResolveGap(${g.id})">${g.resolved ? 'Reopen' : 'Resolve'}</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            }
+
             const badge = document.getElementById('gapNavBadge');
             if (badge) {
                 badge.style.display = unresolved > 0 ? 'inline-block' : 'none';
@@ -1333,6 +1342,7 @@
             }
             const qtyMatch = text.match(/(?:total\s+quantity|कुल\s+मात्रा)[\s:/\-]+(\d+)/i) || text.match(/quantity[\s:/\-]+(\d+)/i);
             if (qtyMatch && qtyMatch[1]) document.getElementById('bomQty').value = parseInt(qtyMatch[1]);
+            tenderHasBeenAnalyzed = true;
             recalculateBOM();
             setStep(5, 'done');
 
@@ -1397,10 +1407,30 @@
             btn.disabled = false;
         }
 
-        // BOM Engine
+        // BOM Engine - starts empty until tender analyzed
         let currentBOM = [];
+        let tenderHasBeenAnalyzed = false;
 
         function recalculateBOM() {
+            const tbody = document.getElementById('bomTableBody');
+            if (!tbody) return;
+
+            if (!tenderHasBeenAnalyzed) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:36px 16px; color:#94a3b8; font-style:italic;">
+                            <i class="fas fa-file-invoice" style="font-size:24px; display:block; margin-bottom:8px; color:#cbd5e1;"></i>
+                            No tender loaded. Please go to "1. Tender Requirements", upload a GeM PDF or load a sample to generate the BOM.
+                        </td>
+                    </tr>
+                `;
+                document.getElementById('priceUnitBOM').innerText = "₹0";
+                document.getElementById('priceTotalCost').innerText = "₹0";
+                document.getElementById('priceBidEx').innerText = "₹0";
+                document.getElementById('priceBidInc').innerText = "₹0";
+                return;
+            }
+
             const variant = document.getElementById('bomVariant').value;
             const qty = parseInt(document.getElementById('bomQty').value) || 1;
             const margin = parseInt(document.getElementById('bomMargin').value) || 25;
@@ -1442,7 +1472,6 @@
             }
 
             let unitBOM = 0;
-            const tbody = document.getElementById('bomTableBody');
             tbody.innerHTML = '';
 
             currentBOM.forEach(item => {
