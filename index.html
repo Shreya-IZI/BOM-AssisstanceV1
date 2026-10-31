@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VANA Enterprise — Technical Bidding & BOM Workspace</title>
+    <title>BOM Assist — Autonomous Drone Tender & BOM Intelligence Workspace</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <style>
         :root {
@@ -600,10 +600,10 @@
     <!-- Header -->
     <header class="app-header">
         <div class="brand-section">
-            <div class="brand-logo">V</div>
+            <div class="brand-logo" style="background:#0284c7; font-weight:900;">B</div>
             <div>
-                <span class="brand-name">VANA DEFENCE & AEROSPACE</span>
-                <span class="brand-subtitle">Tender Intelligence & Engineering Rules System</span>
+                <span class="brand-name">BOM ASSIST</span>
+                <span class="brand-subtitle">Autonomous Drone Tender & Engineering Intelligence</span>
             </div>
         </div>
         <div class="status-indicators">
@@ -832,7 +832,7 @@
                     <div class="metric-box">
                         <div class="metric-label">Recommended Bid (Base)</div>
                         <div id="priceBidEx" class="metric-val" style="color:#0369a1;">₹0</div>
-                        <div class="metric-sub">Base revenue to VANA (Excl. GST)</div>
+                        <div class="metric-sub">Base Revenue / Company Target (Excl. GST)</div>
                     </div>
                     <div class="metric-box highlight">
                         <div class="metric-label" style="color:#15803d;">Official GeM Bid</div>
@@ -935,7 +935,7 @@
                     <div style="line-height:1.5;">
                         <strong style="color:#713f12;">How to resolve unmapped tender requirements:</strong>
                         <ol style="margin-left:18px; margin-top:4px; list-style-type:decimal;">
-                            <li><strong>Identify Gaps:</strong> When a tender asks for something not in VANA's catalog (e.g. 5.8GHz VTX or custom release bracket), it appears here.</li>
+                            <li><strong>Identify Gaps:</strong> When a tender asks for something not in the master catalog (e.g. 5.8GHz VTX or custom release bracket), it appears here.</li>
                             <li><strong>Add Provisional Cost:</strong> Click <em>"+ Add Custom Component"</em> to assign a budget price so sales can quote without waiting for long RFQs.</li>
                             <li><strong>BOM Auto-Injection:</strong> Custom items are immediately added to the active BOM and saved into the Master Catalog for future bids.</li>
                         </ol>
@@ -965,7 +965,7 @@
             <div id="tab-catalog" class="tab-panel">
                 <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <h2 class="section-title">VANA Master Item Catalog</h2>
+                        <h2 class="section-title">Multi-Fleet Master Component Catalog</h2>
                         <p class="section-desc">140 enterprise-verified propulsion, avionics, sensor, and ground-station components.</p>
                     </div>
                     <input type="text" id="catalogSearch" oninput="filterCatalog()" placeholder="Search components by SKU, maker or country..." style="border:1px solid var(--border-dark); padding:6px 12px; font-size:12px; border-radius:4px; width:280px;">
@@ -1007,7 +1007,7 @@
         <div class="modal-content" style="max-width: 600px;">
             <div class="modal-header">
                 <span style="display:flex; align-items:center; gap:8px;">
-                    <i class="fas fa-book-open" style="color:#0284c7;"></i> VANA Workspace User Guide
+                    <i class="fas fa-book-open" style="color:#0284c7;"></i> BOM Assist Workspace User Guide
                 </span>
                 <span style="cursor:pointer; font-size:18px;" onclick="closeGuideModal()">&times;</span>
             </div>
@@ -1019,7 +1019,7 @@
                 <p style="color:#475569; margin-bottom:12px;">The system automatically builds a 100% Non-Chinese compliant BOM using verified parts from your 140-item master sheet. It calculates the raw hardware BOM, adds a 5% Warranty Reserve, 4% Contingency, and an Officer Inspection buffer, giving you both the <em>Base Bid (Company Revenue)</em> and the <em>Official GeM Bid (including 18% GST)</em>.</p>
 
                 <h4 style="font-weight:700; color:#0f172a; margin-bottom:4px;">3. Unmapped Items & Sourcing Gaps</h4>
-                <p style="color:#475569; margin-bottom:12px;">If a tender asks for an exotic item or custom bracket not found in VANA's current catalog, enter a provisional budget price so the quotation is never delayed. Once added, it injects into the active BOM and saves permanently to your catalog.</p>
+                <p style="color:#475569; margin-bottom:12px;">If a tender asks for an exotic item or custom bracket not found in the current catalog, enter a provisional budget price so the quotation is never delayed. Once added, it injects into the active BOM and saves permanently to your catalog.</p>
 
                 <h4 style="font-weight:700; color:#0f172a; margin-bottom:4px;">4. Exporting Deliverables</h4>
                 <p style="color:#475569;">Click <em>"Download CSV"</em> for an Excel-compatible spreadsheet, or <em>"Export PDF"</em> for a clean, formal specification document.</p>
@@ -3150,7 +3150,7 @@ const FLEET_VARIANTS = {
             const qty = parseInt(document.getElementById('bomQty').value) || 1;
             const margin = parseInt(document.getElementById('bomMargin').value) || 25;
 
-            let csv = "VANA DEFENCE & AEROSPACE — OFFICIAL COMPLIANT BOM REPORT\n";
+            let csv = "BOM ASSIST — OFFICIAL MULTI-FLEET COMPLIANT BOM REPORT\n";
             csv += `Variant,${variant}\nQuantity,${qty} Units\nMargin,${margin}%\n\n`;
             csv += "Item #,Subsystem,Part Description,Origin,Qty/Unit,Unit Rate (INR),Total Cost (INR)\n";
             let unitTotal = 0;
