@@ -1,0 +1,1458 @@
+{
+  "FPV_5_ANALOG": {
+    "name": "5-Inch X4 Analog FPV Drone",
+    "category": "FPV Tactical / Strike",
+    "specs": "5-inch, 1750KV, 6S, Analog FPV, 5.8GHz",
+    "base_hw_cost": 128230,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "T-Motor Velox V2207 1750KV Motor",
+        "origin": "India",
+        "qty": 4,
+        "cost": 1299
+      },
+      {
+        "cat": "Frame",
+        "name": "SpeedyBee Master 5 V2 5-Inch Carbon Frame Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 7449
+      },
+      {
+        "cat": "Flight Control",
+        "name": "SpeedyBee F405 V4 BLS 55A 30x30 FC & ESC Stack",
+        "origin": "India",
+        "qty": 1,
+        "cost": 6513
+      },
+      {
+        "cat": "Propulsion",
+        "name": "Orange HD 5152 Tri-Blade Flash Propellers (Pair)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 219
+      },
+      {
+        "cat": "Battery",
+        "name": "Bonka 22.2V 1100mAh 130C 6S LiPo Pack",
+        "origin": "India",
+        "qty": 2,
+        "cost": 3709
+      },
+      {
+        "cat": "Charger",
+        "name": "ISDT D2 Mark 2 LiPo Balance Charger (Dual 200W)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 14099
+      },
+      {
+        "cat": "FPV",
+        "name": "CaddxFPV Farsight Analog Camera / Smart Zoom",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 16300
+      },
+      {
+        "cat": "FPV",
+        "name": "SpeedyBee 5.8GHz VTX Antenna V2",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2199
+      },
+      {
+        "cat": "FPV",
+        "name": "SpeedyBee TX Ultra 1600mW VTX Set",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3709
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster Pocket Radio Controller (ELRS)",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 11269
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster XR4 Gemini Dual-Band ELRS Receiver",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 5469
+      },
+      {
+        "cat": "Spares & Tools",
+        "name": "FPV Drone Assembly & Repair Tool Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3749
+      },
+      {
+        "cat": "Packaging",
+        "name": "FPV Tactical Drone Transport Case (E4713S)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2053
+      },
+      {
+        "cat": "FPV",
+        "name": "Skyzone SKY02O OLED 5.8GHz FPV Goggles",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 42369
+      }
+    ]
+  },
+  "FPV_5_DIGITAL": {
+    "name": "5-Inch X4 Digital FPV Drone (Avatar HD)",
+    "category": "FPV Tactical / Strike",
+    "specs": "5-inch, 1750KV, 6S, Walksnail Avatar HD Goggles X",
+    "base_hw_cost": 157678,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "T-Motor Velox V2207 1750KV Motor",
+        "origin": "India",
+        "qty": 4,
+        "cost": 1299
+      },
+      {
+        "cat": "Frame",
+        "name": "SpeedyBee Master 5 V2 5-Inch Carbon Frame Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 7449
+      },
+      {
+        "cat": "Flight Control",
+        "name": "SpeedyBee F405 V4 BLS 55A 30x30 FC & ESC Stack",
+        "origin": "India",
+        "qty": 1,
+        "cost": 6513
+      },
+      {
+        "cat": "Propulsion",
+        "name": "Pro-Range 5152 Tri-Blade Propellers (Pair)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 219
+      },
+      {
+        "cat": "Battery",
+        "name": "Bonka 22.2V 1100mAh 130C 6S LiPo Pack",
+        "origin": "India",
+        "qty": 2,
+        "cost": 3709
+      },
+      {
+        "cat": "Charger",
+        "name": "ISDT D2 Mark 2 LiPo Balance Charger (Dual 200W)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 14099
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster Pocket Radio Controller (ELRS)",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 11269
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster XR4 Gemini Dual-Band ELRS Receiver",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 5469
+      },
+      {
+        "cat": "Spares & Tools",
+        "name": "FPV Drone Repair Tool Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3749
+      },
+      {
+        "cat": "Packaging",
+        "name": "FPV Tactical Drone Transport Case (E4713S)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2053
+      },
+      {
+        "cat": "FPV Digital",
+        "name": "Walksnail Avatar HD Goggles X with Moonlight Kit & GM3",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 94025
+      }
+    ]
+  },
+  "FPV_5_DIGITAL_GPS": {
+    "name": "5-Inch X4 Digital FPV Drone with GPS Return-to-Home",
+    "category": "FPV Tactical / Strike",
+    "specs": "5-inch, 1750KV, M10 GPS RTH, Avatar HD",
+    "base_hw_cost": 160677,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "T-Motor Velox V2207 1750KV Motor",
+        "origin": "India",
+        "qty": 4,
+        "cost": 1299
+      },
+      {
+        "cat": "Frame",
+        "name": "SpeedyBee Master 5 V2 5-Inch Carbon Frame Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 7449
+      },
+      {
+        "cat": "Flight Control",
+        "name": "SpeedyBee F405 V4 BLS 55A 30x30 FC & ESC Stack",
+        "origin": "India",
+        "qty": 1,
+        "cost": 6513
+      },
+      {
+        "cat": "Propulsion",
+        "name": "Pro-Range 5152 Tri-Blade Propellers (Pair)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 219
+      },
+      {
+        "cat": "GPS",
+        "name": "GEPRC GEP-M10Q GPS Module with Compass",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 2999
+      },
+      {
+        "cat": "Battery",
+        "name": "Bonka 22.2V 1100mAh 130C 6S LiPo Pack",
+        "origin": "India",
+        "qty": 2,
+        "cost": 3709
+      },
+      {
+        "cat": "Charger",
+        "name": "ISDT D2 Mark 2 LiPo Balance Charger (Dual 200W)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 14099
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster Pocket Radio Controller (ELRS)",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 11269
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster XR4 Gemini Dual-Band ELRS Receiver",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 5469
+      },
+      {
+        "cat": "Spares & Tools",
+        "name": "FPV Drone Repair Tool Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3749
+      },
+      {
+        "cat": "Packaging",
+        "name": "FPV Tactical Drone Transport Case (E4713S)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2053
+      },
+      {
+        "cat": "FPV Digital",
+        "name": "Walksnail Avatar HD Goggles X with Moonlight Kit & GM3",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 94025
+      }
+    ]
+  },
+  "FPV_7_ANALOG": {
+    "name": "7-Inch X4 Analog Long-Range FPV Drone",
+    "category": "Long-Range Recon / Kamikaze",
+    "specs": "7-inch, 1950KV, 1400mAh 6S, 1600mW VTX, Skyzone OLED",
+    "base_hw_cost": 117081,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "T-Motor Velox V2207 V3 1950KV Freestyle Motor",
+        "origin": "India",
+        "qty": 4,
+        "cost": 1979
+      },
+      {
+        "cat": "Frame",
+        "name": "XL7 V2 294mm Carbon Fiber 7-Inch Frame Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 1646
+      },
+      {
+        "cat": "Flight Control",
+        "name": "SpeedyBee F405 V4 BLS 55A 30x30 FC & ESC Stack",
+        "origin": "India",
+        "qty": 1,
+        "cost": 6513
+      },
+      {
+        "cat": "Propulsion",
+        "name": "HQProp 7x3.5x3 Tri-Blade Polycarbonate Propeller (Pair)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 361
+      },
+      {
+        "cat": "Battery",
+        "name": "Bonka 22.2V 1400mAh 130C 6S LiPo Pack",
+        "origin": "India",
+        "qty": 2,
+        "cost": 4729
+      },
+      {
+        "cat": "Charger",
+        "name": "ISDT D2 Mark 2 LiPo Balance Charger (Dual 200W)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3709
+      },
+      {
+        "cat": "FPV",
+        "name": "CaddxFPV Farsight Analog Camera / Smart Zoom",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 16300
+      },
+      {
+        "cat": "FPV",
+        "name": "SpeedyBee 5.8GHz VTX Antenna V2",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2199
+      },
+      {
+        "cat": "FPV",
+        "name": "SpeedyBee TX Ultra 1600mW High-Power VTX Set",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3709
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster Pocket Radio Controller (ELRS)",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 11269
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster XR4 Gemini Dual-Band ELRS Receiver",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 5469
+      },
+      {
+        "cat": "Spares & Tools",
+        "name": "FPV Drone Repair Tool Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3749
+      },
+      {
+        "cat": "Packaging",
+        "name": "FPV Long Range Drone Case (EW4915)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2053
+      },
+      {
+        "cat": "FPV",
+        "name": "Skyzone SKY02O OLED 5.8GHz FPV Goggles",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 42369
+      }
+    ]
+  },
+  "FPV_7_DIGITAL": {
+    "name": "7-Inch X4 Digital Long-Range FPV Drone",
+    "category": "Long-Range Recon / Kamikaze",
+    "specs": "7-inch, 1950KV, 1400mAh 6S, Avatar HD Digital Goggles X",
+    "base_hw_cost": 146529,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "T-Motor Velox V2207 V3 1950KV Freestyle Motor",
+        "origin": "India",
+        "qty": 4,
+        "cost": 1979
+      },
+      {
+        "cat": "Frame",
+        "name": "XL7 V2 294mm Carbon Fiber 7-Inch Frame Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 1646
+      },
+      {
+        "cat": "Flight Control",
+        "name": "SpeedyBee F405 V4 BLS 55A 30x30 FC & ESC Stack",
+        "origin": "India",
+        "qty": 1,
+        "cost": 6513
+      },
+      {
+        "cat": "Propulsion",
+        "name": "HQProp 7x3.5x3 Tri-Blade Polycarbonate Propeller (Pair)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 361
+      },
+      {
+        "cat": "Battery",
+        "name": "Bonka 22.2V 1400mAh 130C 6S LiPo Pack",
+        "origin": "India",
+        "qty": 2,
+        "cost": 4729
+      },
+      {
+        "cat": "Charger",
+        "name": "ISDT D2 Mark 2 LiPo Balance Charger (Dual 200W)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3709
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster Pocket Radio Controller (ELRS)",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 11269
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster XR4 Gemini Dual-Band ELRS Receiver",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 5469
+      },
+      {
+        "cat": "Spares & Tools",
+        "name": "FPV Drone Repair Tool Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3749
+      },
+      {
+        "cat": "Packaging",
+        "name": "FPV Long Range Drone Case (EW4915)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2053
+      },
+      {
+        "cat": "FPV Digital",
+        "name": "Walksnail Avatar HD Goggles X with Moonlight Kit & GM3",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 94025
+      }
+    ]
+  },
+  "FPV_7_DIGITAL_GPS": {
+    "name": "7-Inch X4 Digital FPV Drone with GPS & Mark4 Frame",
+    "category": "Long-Range Recon / Kamikaze",
+    "specs": "7-inch, Mark4 Frame, 1750KV, M10 GPS, Avatar HD",
+    "base_hw_cost": 152665,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "T-Motor Velox V2207 1750KV Motor",
+        "origin": "India",
+        "qty": 4,
+        "cost": 1299
+      },
+      {
+        "cat": "Frame",
+        "name": "Mark4 V2 7-Inch Carbon Fiber Frame Kit (295mm)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2156
+      },
+      {
+        "cat": "Flight Control",
+        "name": "SpeedyBee F405 V4 BLS 55A 30x30 FC & ESC Stack",
+        "origin": "India",
+        "qty": 1,
+        "cost": 6513
+      },
+      {
+        "cat": "GPS",
+        "name": "GEPRC GEP-M10Q GPS Module with Compass",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 2999
+      },
+      {
+        "cat": "Propulsion",
+        "name": "HQProp 7x3.5x3 Polycarbonate Propeller (Pair)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 359
+      },
+      {
+        "cat": "Battery",
+        "name": "Bonka 22.2V 1100mAh 130C 6S LiPo Pack",
+        "origin": "India",
+        "qty": 2,
+        "cost": 3709
+      },
+      {
+        "cat": "Charger",
+        "name": "ISDT D2 Mark 2 LiPo Balance Charger (Dual 200W)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 14099
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster Pocket Radio Controller (ELRS)",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 11269
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster XR4 Gemini Dual-Band ELRS Receiver",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 5469
+      },
+      {
+        "cat": "Spares & Tools",
+        "name": "FPV Drone Repair Tool Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3749
+      },
+      {
+        "cat": "Packaging",
+        "name": "FPV Tactical Drone Transport Case (E4713S)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2053
+      },
+      {
+        "cat": "FPV Digital",
+        "name": "Walksnail Avatar HD Goggles X with Moonlight Kit & GM3",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 94025
+      }
+    ]
+  },
+  "FPV_10_ANALOG": {
+    "name": "10-Inch X4 Analog Heavy-Lift / Cinelifter Drone",
+    "category": "Heavy-Lift Strike / Payload Delivery",
+    "specs": "10-inch, 900KV, 6S 2200mAh 150C, 1600mW VTX, Skyzone OLED",
+    "base_hw_cost": 136204,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "iFlight XING2 3110 900KV Cinelifter Motor",
+        "origin": "India",
+        "qty": 4,
+        "cost": 4399
+      },
+      {
+        "cat": "Frame",
+        "name": "XL10 V6 10-Inch 420mm Wheelbase Carbon Frame Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 4340
+      },
+      {
+        "cat": "Flight Control",
+        "name": "SpeedyBee F405 V4 BLS 55A 30x30 FC & ESC Stack",
+        "origin": "India",
+        "qty": 1,
+        "cost": 6513
+      },
+      {
+        "cat": "Propulsion",
+        "name": "HQProp MacroQuad 10x5x3 Tri-Blade 10-Inch Prop (Pair)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 1399
+      },
+      {
+        "cat": "Battery",
+        "name": "Dogcom 2200mAh 6S 150C 22.2V LiPo Pack",
+        "origin": "India",
+        "qty": 2,
+        "cost": 4729
+      },
+      {
+        "cat": "Charger",
+        "name": "ISDT D2 Mark 2 LiPo Balance Charger (Dual 200W)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3709
+      },
+      {
+        "cat": "FPV",
+        "name": "CaddxFPV Farsight Analog Camera / Smart Zoom",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 16300
+      },
+      {
+        "cat": "FPV",
+        "name": "SpeedyBee 5.8GHz VTX Antenna V2",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2199
+      },
+      {
+        "cat": "FPV",
+        "name": "SpeedyBee TX Ultra 1600mW High-Power VTX",
+        "origin": "India",
+        "qty": 1,
+        "cost": 2199
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster Pocket Radio Controller (ELRS)",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 11269
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster XR4 Gemini Dual-Band ELRS Receiver",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 5469
+      },
+      {
+        "cat": "Spares & Tools",
+        "name": "FPV Drone Repair Tool Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3749
+      },
+      {
+        "cat": "Packaging",
+        "name": "FPV Heavy Drone Waterproof Hard Case (EW5021)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 8236
+      },
+      {
+        "cat": "FPV",
+        "name": "Skyzone SKY02O OLED 5.8GHz FPV Goggles",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 42369
+      }
+    ]
+  },
+  "FPV_10_DIGITAL": {
+    "name": "10-Inch X4 Digital Heavy-Lift / Cinelifter Drone",
+    "category": "Heavy-Lift Strike / Payload Delivery",
+    "specs": "10-inch, 900KV, 6S 2200mAh, Avatar HD Digital Goggles X",
+    "base_hw_cost": 165086,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "iFlight XING2 3110 900KV Cinelifter Motor",
+        "origin": "India",
+        "qty": 4,
+        "cost": 4399
+      },
+      {
+        "cat": "Frame",
+        "name": "XL10 V6 10-Inch 420mm Wheelbase Carbon Frame Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 4340
+      },
+      {
+        "cat": "Flight Control",
+        "name": "SpeedyBee F405 V4 BLS 55A 30x30 FC & ESC Stack",
+        "origin": "India",
+        "qty": 1,
+        "cost": 6513
+      },
+      {
+        "cat": "Propulsion",
+        "name": "HQProp MacroQuad 10x5x3 Tri-Blade 10-Inch Prop (Pair)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 361
+      },
+      {
+        "cat": "Battery",
+        "name": "Dogcom 2200mAh 6S 150C 22.2V LiPo Pack",
+        "origin": "India",
+        "qty": 2,
+        "cost": 4729
+      },
+      {
+        "cat": "Charger",
+        "name": "ISDT D2 Mark 2 LiPo Balance Charger (Dual 200W)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3709
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster Pocket Radio Controller (ELRS)",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 11269
+      },
+      {
+        "cat": "Radio",
+        "name": "RadioMaster XR4 Gemini Dual-Band ELRS Receiver",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 5469
+      },
+      {
+        "cat": "Spares & Tools",
+        "name": "FPV Drone Repair Tool Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 3749
+      },
+      {
+        "cat": "Packaging",
+        "name": "FPV Heavy Drone Waterproof Hard Case (EW5021)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 8236
+      },
+      {
+        "cat": "FPV Digital",
+        "name": "Walksnail Avatar HD Goggles X with Moonlight Kit & GM3",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 94025
+      }
+    ]
+  },
+  "MICRO_UAV_RADAR": {
+    "name": "Micro UAV Surveillance Drone with Obstacle Avoidance Radar",
+    "category": "Tactical Surveillance / ISR",
+    "specs": "Endurance: 40-45m, Range: 10km, IP53, Forward Radar, Siyi A8 Mini, Orbit Nano RTK",
+    "base_hw_cost": 321446,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "T-Motor Navigator MN2212 920KV Motor (Set of 4)",
+        "origin": "China",
+        "qty": 4,
+        "cost": 4332
+      },
+      {
+        "cat": "Battery",
+        "name": "M-Power 9000mAh 4S Li-ion Battery for Surveillance",
+        "origin": "India",
+        "qty": 1,
+        "cost": 8496
+      },
+      {
+        "cat": "ESC",
+        "name": "T-Motor V50A 6S 4-in-1 32-bit ESC (50A)",
+        "origin": "China",
+        "qty": 1,
+        "cost": 8479
+      },
+      {
+        "cat": "Flight Control",
+        "name": "Orange Cube+ with Mini Carrier Board Set",
+        "origin": "Taiwan",
+        "qty": 1,
+        "cost": 57750
+      },
+      {
+        "cat": "Obstacle Avoidance",
+        "name": "JIYI R21-F Forward Obstacle Avoidance Radar",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 18053
+      },
+      {
+        "cat": "Payload Camera",
+        "name": "Siyi A8 Mini 3-Axis 4K 8MP 6X Digital Zoom Gimbal",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 27570
+      },
+      {
+        "cat": "GPS / NavIC",
+        "name": "Orbit Nano RTK GNSS Module (NEO-F9P-15B + NavIC)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 22420
+      },
+      {
+        "cat": "Radio / GCS",
+        "name": "Skydroid H12 Integrated Display Remote Controller",
+        "origin": "China",
+        "qty": 1,
+        "cost": 53600
+      },
+      {
+        "cat": "Power Module",
+        "name": "Pololu S18V20AHV Step-Up/Step-Down Voltage Regulator",
+        "origin": "India",
+        "qty": 1,
+        "cost": 4956
+      },
+      {
+        "cat": "Power Module",
+        "name": "Pololu S18V20ALV 4-12V Voltage Regulator",
+        "origin": "India",
+        "qty": 2,
+        "cost": 4130
+      },
+      {
+        "cat": "Power Module",
+        "name": "Hex CubePilot Power Brick Mini 30A for Pixhawk 2.1",
+        "origin": "Germany",
+        "qty": 1,
+        "cost": 2666
+      },
+      {
+        "cat": "Antenna & RF",
+        "name": "2.4GHz 5dBi Omni Wi-Fi Booster Antenna + SMA Cables",
+        "origin": "India",
+        "qty": 2,
+        "cost": 468
+      },
+      {
+        "cat": "Propeller",
+        "name": "3K Carbon Fiber 1055 Propeller (CW+CCW Pairs)",
+        "origin": "China",
+        "qty": 2,
+        "cost": 559
+      },
+      {
+        "cat": "Airframe",
+        "name": "Custom Hot-Pressed Carbon Fiber Chassis & Motor Mounts",
+        "origin": "India",
+        "qty": 1,
+        "cost": 25960
+      },
+      {
+        "cat": "Structure",
+        "name": "Top/Lower Enclosures, GPS Nylon Mount, End Caps",
+        "origin": "India",
+        "qty": 1,
+        "cost": 5200
+      },
+      {
+        "cat": "Hardware & Spares",
+        "name": "Military Fasteners, Knurls, Washers, Heat Shrinks",
+        "origin": "India",
+        "qty": 1,
+        "cost": 4000
+      },
+      {
+        "cat": "Transit Case",
+        "name": "IP67 Ergonomic Waterproof Hard Case with Wheels",
+        "origin": "India",
+        "qty": 1,
+        "cost": 20886
+      },
+      {
+        "cat": "Maintenance Tools",
+        "name": "Toolkit, ESD Cleaning Brush, Lens Cloth, CellMeter",
+        "origin": "India",
+        "qty": 1,
+        "cost": 4950
+      },
+      {
+        "cat": "Spares",
+        "name": "Matched Spare Propeller Set + Spare 9000mAh Battery",
+        "origin": "India",
+        "qty": 1,
+        "cost": 9614
+      },
+      {
+        "cat": "Structure",
+        "name": "Foxtech EZ-Folding Spare Landing Gear Set (4pcs)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 7080
+      },
+      {
+        "cat": "Charger",
+        "name": "SkyRC T200 1-6S LiPo/Li-ion Dual Balance Charger",
+        "origin": "India",
+        "qty": 1,
+        "cost": 9438
+      },
+      {
+        "cat": "Documentation",
+        "name": "Bilingual Flight Logbook & Technical Manual",
+        "origin": "India",
+        "qty": 1,
+        "cost": 250
+      }
+    ]
+  },
+  "VANA_UAV_VIO": {
+    "name": "VANA UAV \u2014 High-Endurance VIO & Dual GNSS System",
+    "category": "EW Contested Tactical ISR",
+    "specs": "Endurance: 45-60m, Range: 10km, 3000m AMSL, IP53, VIO GPS-Denied, C14 Pro 4K, Herelink",
+    "base_hw_cost": 2284035,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "T-Motor Antigravity MN5008 KV340 Motor (4 Units)",
+        "origin": "China",
+        "qty": 4,
+        "cost": 9438
+      },
+      {
+        "cat": "Battery",
+        "name": "M-Power 6S 34000mAh Li-ion High-Energy Battery",
+        "origin": "India",
+        "qty": 1,
+        "cost": 38940
+      },
+      {
+        "cat": "ESC",
+        "name": "T-Motor Air 40A HV ESC (4 Units)",
+        "origin": "China",
+        "qty": 4,
+        "cost": 3149
+      },
+      {
+        "cat": "Flight Control",
+        "name": "Pixhawk Mini Carrier Board + Orange Cube Set",
+        "origin": "Taiwan",
+        "qty": 1,
+        "cost": 57750
+      },
+      {
+        "cat": "GPS",
+        "name": "3DR MRO SAM-GNSS Full-Size Receiver",
+        "origin": "USA",
+        "qty": 1,
+        "cost": 9440
+      },
+      {
+        "cat": "C2 Datalink",
+        "name": "Hex Herelink HD Video Transmission System (Air+Ground)",
+        "origin": "China",
+        "qty": 1,
+        "cost": 259600
+      },
+      {
+        "cat": "Power Regulation",
+        "name": "Pololu 7-12V, 5V & 9-30V Voltage Regulator Suite",
+        "origin": "USA",
+        "qty": 1,
+        "cost": 23146
+      },
+      {
+        "cat": "Power Sensing",
+        "name": "Mauch 6S Backup BEC + 100A Hall Power Module",
+        "origin": "Germany",
+        "qty": 1,
+        "cost": 8212
+      },
+      {
+        "cat": "Payload Camera",
+        "name": "Skydroid C14 Pro 4K 100X Hybrid Zoom Gimbal Camera",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 153400
+      },
+      {
+        "cat": "GPS-Denied Nav",
+        "name": "Stride Dynamics VIO Visual-Inertial Odometry System",
+        "origin": "India",
+        "qty": 1,
+        "cost": 497960
+      },
+      {
+        "cat": "Anti-Jamming",
+        "name": "Mosaic-Go G5 P8 Anti-Jamming / Anti-Spoofing Kit",
+        "origin": "India",
+        "qty": 1,
+        "cost": 227150
+      },
+      {
+        "cat": "Anti-Jamming",
+        "name": "Sunstone High-Resilience GNSS Anti-Jam Protection",
+        "origin": "India",
+        "qty": 1,
+        "cost": 354000
+      },
+      {
+        "cat": "Propeller",
+        "name": "T-Motor 18x6.1 Carbon Fiber Precision Propellers (2 Pairs)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 97320
+      },
+      {
+        "cat": "Airframe",
+        "name": "Hot-Pressed Carbon Chassis, Motor Mounts, Landing Gear",
+        "origin": "India",
+        "qty": 1,
+        "cost": 25960
+      },
+      {
+        "cat": "Structure",
+        "name": "CNC Machined Aluminum Arm, Battery & Camera Holders",
+        "origin": "India",
+        "qty": 1,
+        "cost": 25000
+      },
+      {
+        "cat": "Transit Case",
+        "name": "IP67 Ergonomic Waterproof Case with Wheels & Pouches",
+        "origin": "India",
+        "qty": 1,
+        "cost": 38940
+      },
+      {
+        "cat": "Spares & Charger",
+        "name": "Spare 18-inch Props, 34000mAh Battery & ISDT Charger",
+        "origin": "India",
+        "qty": 1,
+        "cost": 293239
+      },
+      {
+        "cat": "Maintenance Tools",
+        "name": "Toolkit, Cleaning Cloth, ESD Brush, Battery Meter",
+        "origin": "India",
+        "qty": 1,
+        "cost": 4950
+      }
+    ]
+  },
+  "VANA_UAV_CRPA": {
+    "name": "VANA UAV \u2014 Military CRPA Multi-Antenna Anti-Jam System",
+    "category": "Electronic Warfare Contested Tactical ISR",
+    "specs": "Endurance: 45-60m, Range: 10km, CRPA MS.GNSS.AJ-851-R Anti-Jam, VIO, C14 Pro",
+    "base_hw_cost": 3618649,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "T-Motor Antigravity MN5008 KV340 Motor (4 Units)",
+        "origin": "China",
+        "qty": 4,
+        "cost": 9438
+      },
+      {
+        "cat": "Battery",
+        "name": "M-Power 6S 34000mAh Li-ion High-Energy Battery",
+        "origin": "India",
+        "qty": 1,
+        "cost": 32790
+      },
+      {
+        "cat": "ESC",
+        "name": "T-Motor Air 40A HV ESC (4 Units)",
+        "origin": "China",
+        "qty": 4,
+        "cost": 3149
+      },
+      {
+        "cat": "Flight Control",
+        "name": "Pixhawk Mini Carrier Board + Orange Cube Set",
+        "origin": "Taiwan",
+        "qty": 1,
+        "cost": 57750
+      },
+      {
+        "cat": "GPS",
+        "name": "3DR MRO SAM-GNSS Full-Size Receiver",
+        "origin": "USA",
+        "qty": 1,
+        "cost": 9440
+      },
+      {
+        "cat": "C2 Datalink",
+        "name": "Hex Herelink HD Video Transmission System",
+        "origin": "China",
+        "qty": 1,
+        "cost": 259600
+      },
+      {
+        "cat": "Power Module",
+        "name": "Mauch 6S Backup BEC + 100A Hall Power Module",
+        "origin": "Germany",
+        "qty": 1,
+        "cost": 8212
+      },
+      {
+        "cat": "Payload Camera",
+        "name": "Skydroid C14 Pro 4K 100X Hybrid Zoom Gimbal Camera",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 153400
+      },
+      {
+        "cat": "GPS-Denied Nav",
+        "name": "Stride Dynamics VIO Visual-Inertial Odometry System",
+        "origin": "India",
+        "qty": 1,
+        "cost": 497960
+      },
+      {
+        "cat": "CRPA Anti-Jam",
+        "name": "Military CRPA Multi-Element Array MS.GNSS.AJ-851-R",
+        "origin": "Import",
+        "qty": 1,
+        "cost": 1911600
+      },
+      {
+        "cat": "Propeller",
+        "name": "T-Motor 18x6.1 Carbon Fiber Precision Propellers (2 Pairs)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 97320
+      },
+      {
+        "cat": "Airframe",
+        "name": "Hot-Pressed Carbon Chassis, Motor Mounts, Landing Gear",
+        "origin": "India",
+        "qty": 1,
+        "cost": 25960
+      },
+      {
+        "cat": "Structure",
+        "name": "CNC Machined Aluminum Arm, Battery & Camera Holders",
+        "origin": "India",
+        "qty": 1,
+        "cost": 25000
+      },
+      {
+        "cat": "Transit Case",
+        "name": "IP67 Ergonomic Waterproof Case with Wheels",
+        "origin": "India",
+        "qty": 1,
+        "cost": 33000
+      },
+      {
+        "cat": "Spares & Charger",
+        "name": "Spare 18-inch Props, 34000mAh Battery & ISDT Charger",
+        "origin": "India",
+        "qty": 1,
+        "cost": 309233
+      }
+    ]
+  },
+  "VANA_UAV_90M_GETAC": {
+    "name": "VANA UAV \u2014 90-Minute Endurance Surveillance System (Getac S410 + Eclipse10 EO/IR)",
+    "category": "Ultra Long-Endurance Reconnaissance",
+    "specs": "Endurance: 90 min, 40000mAh 4S Solid State, Getac Rugged Laptop, Eclipse10 EO/IR, Axle GCS",
+    "base_hw_cost": 1464883,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "Vector 500KV BLDC Motor (4 Units)",
+        "origin": "India",
+        "qty": 4,
+        "cost": 10710
+      },
+      {
+        "cat": "Battery",
+        "name": "GenX Pro Solid-State 14.8V 4S 40000mAh (350 Wh/kg)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 47067
+      },
+      {
+        "cat": "ESC",
+        "name": "T-Motor Air 40A HV ESC (4 Units)",
+        "origin": "China",
+        "qty": 4,
+        "cost": 3149
+      },
+      {
+        "cat": "Flight Control",
+        "name": "Pixhawk Mini Carrier Board + Orange Cube Set",
+        "origin": "Taiwan",
+        "qty": 1,
+        "cost": 57750
+      },
+      {
+        "cat": "GPS",
+        "name": "3DR MRO SAM-GNSS Full-Size Receiver",
+        "origin": "USA",
+        "qty": 1,
+        "cost": 9440
+      },
+      {
+        "cat": "GCS Remote",
+        "name": "Axle Drone OneView Remote Controller (Air + Ground)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 134400
+      },
+      {
+        "cat": "Rugged Compute",
+        "name": "Getac S410G4 Rugged Field Ground Control Laptop",
+        "origin": "Taiwan",
+        "qty": 1,
+        "cost": 230100
+      },
+      {
+        "cat": "Power Regulation",
+        "name": "Pololu 7-12V, 5V & 9-30V Voltage Regulators",
+        "origin": "USA",
+        "qty": 1,
+        "cost": 23146
+      },
+      {
+        "cat": "Power Module",
+        "name": "Mauch 6S Backup BEC + 100A Hall Power Module",
+        "origin": "Germany",
+        "qty": 1,
+        "cost": 8212
+      },
+      {
+        "cat": "Payload Gimbal",
+        "name": "MotionMatics ECLIPSE10 Stabilized EO+IR Dual Gimbal",
+        "origin": "India",
+        "qty": 1,
+        "cost": 646640
+      },
+      {
+        "cat": "Propeller",
+        "name": "T-Motor MF1806 Polymer Folding Propellers (2 Pairs)",
+        "origin": "China",
+        "qty": 2,
+        "cost": 5248
+      },
+      {
+        "cat": "Airframe",
+        "name": "Hot-Pressed Carbon Chassis & CNC Aluminum Mounts",
+        "origin": "India",
+        "qty": 1,
+        "cost": 50960
+      },
+      {
+        "cat": "Transit Case",
+        "name": "IP67 Ergonomic Waterproof Case with Wheels & Pouches",
+        "origin": "India",
+        "qty": 1,
+        "cost": 38940
+      },
+      {
+        "cat": "Spares & Charger",
+        "name": "Spare Props, 40000mAh Battery & ISDT 20A Charger",
+        "origin": "India",
+        "qty": 1,
+        "cost": 125096
+      }
+    ]
+  },
+  "VANA_UAV_75M": {
+    "name": "VANA UAV \u2014 75-Minute Endurance Tactical Surveillance System",
+    "category": "Long-Endurance Reconnaissance",
+    "specs": "Endurance: 75 min, 40000mAh 4S Solid State, Gtech Laptop, Eclipse10 EO/IR",
+    "base_hw_cost": 1463310,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "Vector 500KV BLDC Motor (4 Units)",
+        "origin": "India",
+        "qty": 4,
+        "cost": 10710
+      },
+      {
+        "cat": "Battery",
+        "name": "GenX Pro Solid-State 14.8V 4S 40000mAh (350 Wh/kg)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 32790
+      },
+      {
+        "cat": "ESC",
+        "name": "T-Motor Air 40A HV ESC (4 Units)",
+        "origin": "China",
+        "qty": 4,
+        "cost": 3149
+      },
+      {
+        "cat": "Flight Control",
+        "name": "Pixhawk Mini Carrier Board + Orange Cube Set",
+        "origin": "Taiwan",
+        "qty": 1,
+        "cost": 57750
+      },
+      {
+        "cat": "GPS",
+        "name": "3DR MRO SAM-GNSS Full-Size Receiver",
+        "origin": "USA",
+        "qty": 1,
+        "cost": 9440
+      },
+      {
+        "cat": "GCS Remote",
+        "name": "Axle Drone OneView Remote Controller (Air + Ground)",
+        "origin": "India",
+        "qty": 1,
+        "cost": 134400
+      },
+      {
+        "cat": "Rugged Compute",
+        "name": "Gtech Rugged Tactical Ground Control Laptop",
+        "origin": "Taiwan",
+        "qty": 1,
+        "cost": 230100
+      },
+      {
+        "cat": "Payload Gimbal",
+        "name": "MotionMatics ECLIPSE10 Stabilized EO+IR Dual Gimbal",
+        "origin": "India",
+        "qty": 1,
+        "cost": 646640
+      },
+      {
+        "cat": "Propeller",
+        "name": "T-Motor 18-inch Folding Propellers (2 Pairs)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 5248
+      },
+      {
+        "cat": "Airframe",
+        "name": "Hot-Pressed Carbon Chassis & CNC Aluminum Mounts",
+        "origin": "India",
+        "qty": 1,
+        "cost": 50960
+      },
+      {
+        "cat": "Transit Case",
+        "name": "IP67 Ergonomic Waterproof Transit Case with Wheels",
+        "origin": "India",
+        "qty": 1,
+        "cost": 38940
+      },
+      {
+        "cat": "Spares & Charger",
+        "name": "Spare Props, 40000mAh Battery & ISDT 20A Charger",
+        "origin": "India",
+        "qty": 1,
+        "cost": 125096
+      }
+    ]
+  },
+  "VANA_UAV_50M": {
+    "name": "VANA UAV \u2014 50-Minute Standard Tactical Surveillance System",
+    "category": "Standard Tactical Reconnaissance",
+    "specs": "Endurance: 50 min, Vector 500KV, 40000mAh 4S, Eclipse10 EO/IR, Gtech Laptop",
+    "base_hw_cost": 1445866,
+    "items": [
+      {
+        "cat": "Propulsion",
+        "name": "Vector 500KV BLDC Motor (4 Units)",
+        "origin": "India",
+        "qty": 4,
+        "cost": 10710
+      },
+      {
+        "cat": "Battery",
+        "name": "GenX Pro Solid-State 14.8V 4S 40000mAh Battery",
+        "origin": "India",
+        "qty": 1,
+        "cost": 32790
+      },
+      {
+        "cat": "ESC",
+        "name": "T-Motor Air 40A HV ESC (4 Units)",
+        "origin": "China",
+        "qty": 4,
+        "cost": 3149
+      },
+      {
+        "cat": "Flight Control",
+        "name": "Pixhawk Mini Carrier Board + Orange Cube Set",
+        "origin": "Taiwan",
+        "qty": 1,
+        "cost": 57750
+      },
+      {
+        "cat": "GPS",
+        "name": "3DR MRO SAM-GNSS Full-Size Receiver",
+        "origin": "USA",
+        "qty": 1,
+        "cost": 9440
+      },
+      {
+        "cat": "GCS Remote",
+        "name": "Axle Drone OneView Remote Controller",
+        "origin": "India",
+        "qty": 1,
+        "cost": 134400
+      },
+      {
+        "cat": "Rugged Compute",
+        "name": "Gtech Rugged Tactical Ground Control Laptop",
+        "origin": "Taiwan",
+        "qty": 1,
+        "cost": 230100
+      },
+      {
+        "cat": "Payload Gimbal",
+        "name": "MotionMatics ECLIPSE10 Stabilized EO+IR Dual Gimbal",
+        "origin": "India",
+        "qty": 1,
+        "cost": 646640
+      },
+      {
+        "cat": "Propeller",
+        "name": "T-Motor 18-inch Precision Propellers (2 Pairs)",
+        "origin": "India",
+        "qty": 2,
+        "cost": 5248
+      },
+      {
+        "cat": "Airframe",
+        "name": "Hot-Pressed Carbon Chassis & CNC Aluminum Mounts",
+        "origin": "India",
+        "qty": 1,
+        "cost": 50960
+      },
+      {
+        "cat": "Transit Case",
+        "name": "IP67 Ergonomic Waterproof Case with Wheels",
+        "origin": "India",
+        "qty": 1,
+        "cost": 33000
+      },
+      {
+        "cat": "Spares & Charger",
+        "name": "Spare Props, 40000mAh Battery & ISDT 20A Charger",
+        "origin": "India",
+        "qty": 1,
+        "cost": 125096
+      }
+    ]
+  }
+}
