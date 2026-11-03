@@ -1191,6 +1191,7 @@
                         <div style="flex:2; min-width:240px;">
                             <label style="font-size:11px; font-weight:600; color:#475569; display:block; margin-bottom:4px;">DRONE PLATFORM & VARIANT</label>
                             <select id="bomVariant" onchange="handleVariantChange()" style="width:100%; border:1px solid var(--border-dark); padding:6px 10px; border-radius:4px; font-size:12px; font-weight:600;">
+                                <option value="" disabled selected>-- Select Platform or Upload Tender in Step 1 --</option>
                                 <optgroup label="Tactical FPV Drones (Kamikaze / Strike / Recon)">
                                     <option value="FPV_5_ANALOG">5-Inch X4 Analog FPV Drone (1750KV, 6S, 1600mW VTX, Skyzone OLED)</option>
                                     <option value="FPV_5_DIGITAL">5-Inch X4 Digital FPV Drone (Walksnail Avatar HD Goggles X)</option>
@@ -1215,7 +1216,7 @@
                         </div>
                         <div style="flex:1; min-width:120px;">
                             <label style="font-size:11px; font-weight:600; color:#475569; display:block; margin-bottom:4px;">TENDER QUANTITY</label>
-                            <input type="number" id="bomQty" value="48" min="1" onchange="recalculateBOM()" style="width:100%; border:1px solid var(--border-dark); padding:6px 10px; border-radius:4px; font-size:12px; font-weight:700;">
+                            <input type="number" id="bomQty" value="" placeholder="e.g. 10" min="1" onchange="recalculateBOM()" style="width:100%; border:1px solid var(--border-dark); padding:6px 10px; border-radius:4px; font-size:12px; font-weight:700;">
                         </div>
                         <div style="flex:1; min-width:120px;">
                             <label style="font-size:11px; font-weight:600; color:#475569; display:block; margin-bottom:4px;">MARGIN BUFFER %</label>
@@ -3639,12 +3640,13 @@ const FLEET_VARIANTS = {
             const tbody = document.getElementById('bomTableBody');
             if (!tbody) return;
 
-            if (!tenderHasBeenAnalyzed) {
+            const variantVal = document.getElementById('bomVariant')?.value || "";
+            if (!tenderHasBeenAnalyzed || !variantVal) {
                 tbody.innerHTML = `
                     <tr>
                         <td colspan="6" style="text-align:center; padding:36px 16px; color:#94a3b8; font-style:italic;">
                             <i class="fas fa-file-invoice" style="font-size:24px; display:block; margin-bottom:8px; color:#cbd5e1;"></i>
-                            No tender loaded. Please go to "1. Tender Requirements", upload a GeM PDF or load a sample to generate the BOM.
+                            No tender loaded. Please go to "1. Upload & Scan", upload a GeM PDF or load a sample to generate the BOM.
                         </td>
                     </tr>
                 `;
@@ -3793,7 +3795,8 @@ const FLEET_VARIANTS = {
             a.click();
         }
 
-        function printOrSavePDF() { window.print(); }
+        function printOrSavePDF() {
+            if (!checkTenderLoaded('export PDF')) return; window.print(); }
 
         const CATALOG_SAMPLE = [
             { cat: "Motor", mfr: "Vector", model: "3115 SL - 900KV", coo: "India", mii: true, price: 5000 },
@@ -3845,7 +3848,8 @@ const FLEET_VARIANTS = {
             const tbody = document.getElementById('commercialTermsTableBody');
             if (!tbody) return;
 
-            if (!tenderHasBeenAnalyzed) {
+            const variantVal = document.getElementById('bomVariant')?.value || "";
+            if (!tenderHasBeenAnalyzed || !variantVal) {
                 tbody.innerHTML = `
                     <tr>
                         <td colspan="6" style="text-align:center; padding:32px 16px; color:#94a3b8; font-style:italic;">
@@ -3889,8 +3893,20 @@ const FLEET_VARIANTS = {
             `;
         }
 
+        
+        // Modal Guards for Empty Initial State
+        function checkTenderLoaded(actionName) {
+            const v = document.getElementById('bomVariant')?.value;
+            if (!tenderHasBeenAnalyzed || !v) {
+                alert(`No tender loaded. Please go to Step 1 and upload a GeM PDF or load a sample first to ${actionName}.`);
+                return false;
+            }
+            return true;
+        }
+
         // 1. MAKE IN INDIA (MII) LOCAL CONTENT & CERTIFICATE
         function openMIIModal() {
+            if (!checkTenderLoaded('generate the Make in India certificate')) return;
             renderMIICertificate();
             document.getElementById('miiModal').classList.add('open');
         }
@@ -4029,6 +4045,7 @@ const FLEET_VARIANTS = {
 
         // 2. REVERSE AUCTION (RA) SIMULATOR
         function openRAModal() {
+            if (!checkTenderLoaded('simulate the Reverse Auction')) return;
             const totalProjectCost = window.currentProjectCost || 0;
             const bidIncGST = window.currentOfficialBid || 0;
 
@@ -4301,6 +4318,7 @@ const FLEET_VARIANTS = {
 
         // 4. TECHNICAL COMPLIANCE MATRIX GENERATOR
         function openComplianceModal() {
+            if (!checkTenderLoaded('generate the compliance matrix')) return;
             renderComplianceMatrix();
             document.getElementById('complianceModal').classList.add('open');
         }
