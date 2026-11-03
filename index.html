@@ -1264,21 +1264,21 @@
                                 <label style="font-size:11px; font-weight:700; color:#0f172a; display:block; margin-bottom:4px;">
                                     1. WARRANTY PERIOD:
                                 </label>
-                                <input type="text" id="cfgWarranty" value="3 Years Comprehensive On-Site" oninput="updateCommercialTermsTable()" style="width:100%; border:1px solid #7dd3fc; border-radius:4px; padding:6px 10px; font-size:12px; font-weight:600; background:#ffffff;">
+                                <input type="text" id="cfgWarranty" value="" placeholder="Will populate when tender is loaded..." oninput="updateCommercialTermsTable()" style="width:100%; border:1px solid #7dd3fc; border-radius:4px; padding:6px 10px; font-size:12px; font-weight:600; background:#ffffff;">
                                 <span style="font-size:10px; color:#64748b; margin-top:2px; display:block;">Defect liability & full replacement of all spares</span>
                             </div>
                             <div>
                                 <label style="font-size:11px; font-weight:700; color:#0f172a; display:block; margin-bottom:4px;">
                                     2. AMC DURATION & TERMS:
                                 </label>
-                                <input type="text" id="cfgAMC" value="2 Years Post-Warranty (48-Hr Turnaround SLA)" oninput="updateCommercialTermsTable()" style="width:100%; border:1px solid #7dd3fc; border-radius:4px; padding:6px 10px; font-size:12px; font-weight:600; background:#ffffff;">
+                                <input type="text" id="cfgAMC" value="" placeholder="Will populate when tender is loaded..." oninput="updateCommercialTermsTable()" style="width:100%; border:1px solid #7dd3fc; border-radius:4px; padding:6px 10px; font-size:12px; font-weight:600; background:#ffffff;">
                                 <span style="font-size:10px; color:#64748b; margin-top:2px; display:block;">Annual maintenance, scheduled servicing & depot support</span>
                             </div>
                             <div>
                                 <label style="font-size:11px; font-weight:700; color:#0f172a; display:block; margin-bottom:4px;">
                                     3. TRAINING LOCATION(S) & DAYS:
                                 </label>
-                                <input type="text" id="cfgTraining" value="Buyer Base / High-Altitude (Leh) — 10 Working Days" oninput="updateCommercialTermsTable()" style="width:100%; border:1px solid #7dd3fc; border-radius:4px; padding:6px 10px; font-size:12px; font-weight:600; background:#ffffff;">
+                                <input type="text" id="cfgTraining" value="" placeholder="Will populate when tender is loaded..." oninput="updateCommercialTermsTable()" style="width:100%; border:1px solid #7dd3fc; border-radius:4px; padding:6px 10px; font-size:12px; font-weight:600; background:#ffffff;">
                                 <span style="font-size:10px; color:#64748b; margin-top:2px; display:block;">5 Days Flight Navigation + 5 Days 1st-Line Maintenance</span>
                             </div>
                         </div>
@@ -1290,8 +1290,8 @@
                     <div class="panel-heading" style="flex-wrap:wrap; gap:10px;">
                         <div>
                             <span class="panel-title">Exploded Assembly Hierarchy (Per Drone)</span>
-                            <span id="miiSummaryBadge" class="badge badge-green" style="margin-left:8px; cursor:pointer;" onclick="openMIIModal()">
-                                <i class="fas fa-certificate"></i> MII: Calculating...
+                            <span id="miiSummaryBadge" class="badge badge-gray" style="margin-left:8px; cursor:pointer;" onclick="openMIIModal()">
+                                <i class="fas fa-certificate"></i> MII: Pending Tender
                             </span>
                         </div>
                         <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -2040,17 +2040,13 @@
 
             // Auto-detect Warranty Period
             const wMatch = text.match(/(\d+)\s*(?:year|yr)s?\s*(?:comprehensive\s*)?(?:warranty|guarantee)/i);
-            if (wMatch && wMatch[1]) {
-                const wInput = document.getElementById('cfgWarranty');
-                if (wInput) wInput.value = `${wMatch[1]} Years Comprehensive On-Site`;
-            }
+            const wInput = document.getElementById('cfgWarranty');
+            if (wInput) wInput.value = (wMatch && wMatch[1]) ? `${wMatch[1]} Years Comprehensive On-Site` : "3 Years Comprehensive On-Site";
 
             // Auto-detect AMC Terms
             const amcMatch = text.match(/(\d+)\s*(?:year|yr)s?\s*(?:amc|camc|annual\s*maintenance)/i);
-            if (amcMatch && amcMatch[1]) {
-                const aInput = document.getElementById('cfgAMC');
-                if (aInput) aInput.value = `${amcMatch[1]} Years Post-Warranty (48h Turnaround SLA)`;
-            }
+            const aInput = document.getElementById('cfgAMC');
+            if (aInput) aInput.value = (amcMatch && amcMatch[1]) ? `${amcMatch[1]} Years Post-Warranty (48h Turnaround SLA)` : "2 Years Post-Warranty (48-Hr Turnaround SLA)";
 
             // Auto-detect Training Location & Days
             const trDaysMatch = text.match(/(\d+)\s*(?:working\s*)?days?\s*(?:training|instruction)/i) || text.match(/training[\s\S]{0,40}?(\d+)\s*days?/i);
@@ -3626,7 +3622,17 @@ const FLEET_VARIANTS = {
 
         function handleVariantChange() {
             tenderHasBeenAnalyzed = true;
+            if (!document.getElementById('cfgWarranty').value) {
+                document.getElementById('cfgWarranty').value = "3 Years Comprehensive On-Site";
+            }
+            if (!document.getElementById('cfgAMC').value) {
+                document.getElementById('cfgAMC').value = "2 Years Post-Warranty (48-Hr Turnaround SLA)";
+            }
+            if (!document.getElementById('cfgTraining').value) {
+                document.getElementById('cfgTraining').value = "Buyer Base / High-Altitude (Leh) — 10 Working Days";
+            }
             recalculateBOM();
+            updateCommercialTermsTable();
         }
 
         function recalculateBOM() {
@@ -3646,6 +3652,11 @@ const FLEET_VARIANTS = {
                 document.getElementById('priceTotalCost').innerText = "₹0";
                 document.getElementById('priceBidEx').innerText = "₹0";
                 document.getElementById('priceBidInc').innerText = "₹0";
+                const miiBadge = document.getElementById('miiSummaryBadge');
+                if (miiBadge) {
+                    miiBadge.innerText = "MII: Pending Tender";
+                    miiBadge.className = "badge badge-gray";
+                }
                 return;
             }
 
@@ -3833,6 +3844,18 @@ const FLEET_VARIANTS = {
         function updateCommercialTermsTable() {
             const tbody = document.getElementById('commercialTermsTableBody');
             if (!tbody) return;
+
+            if (!tenderHasBeenAnalyzed) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center; padding:32px 16px; color:#94a3b8; font-style:italic;">
+                            <i class="fas fa-file-contract" style="font-size:24px; display:block; margin-bottom:8px; color:#cbd5e1;"></i>
+                            No tender loaded. Contractual terms (Warranty, AMC, and Training) will automatically populate when you upload or scan a tender in Step 1.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
 
             const warranty = document.getElementById('cfgWarranty')?.value || "3 Years Comprehensive On-Site";
             const amc = document.getElementById('cfgAMC')?.value || "2 Years Post-Warranty (48h Turnaround SLA)";
